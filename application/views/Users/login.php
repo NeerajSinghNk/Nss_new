@@ -35,16 +35,27 @@
 			<div style="text-align: right">
 				<a href="<?= base_url('Users/index');?>" >New Registration</a>
 			</div>
-			<!-- <div style = "font-size:14px; color:#cc0000; margin-top:10px; text-align:center;"><?php echo $error ?></div> -->
+			<div style = "font-size:14px; color:#cc0000; margin-top:10px; text-align:center;">
+			<?php 
+			if ($this->session->flashdata('matchFound') != '') 
+			{ ?>
+                <div class="success-message" style="margin-bottom: 20px;font-size: 20px;color: red;"><?php echo $this->session->flashdata('matchFound'); ?></div>
+            <?php }?>
+			</div>
 			<div>
 				<?php
 					if($this->session->flashdata('success') != ''){
-						echo '<script>toastr.success("'.$this->session->flashdata('success').'","Success");</script>';
+						//echo '<script>toastr.success("'.$this->session->flashdata('success').'","Success");</script>';
+						?>
+						<div class="success-message" style="margin-bottom: 20px;font-size: 20px;color: green;"><?php echo $this->session->flashdata('success'); ?></div>
+						<?php
 						}
 						if($this->session->flashdata('notice') != ''){
-							echo '<script>toastr.warning("'.$this->session->flashdata('notice').'","Notice");</script>';
-							}
-						?>
+							//echo '<script>toastr.warning("'.$this->session->flashdata('notice').'","Notice");</script>';
+							?>
+							<div class="success-message" style="margin-bottom: 20px;font-size: 20px;color: red;"><?php echo $this->session->flashdata('notice'); ?></div>
+							
+						<?php } ?>
 				
 			</div>
 		</form>

@@ -1,34 +1,24 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class Users extends MY_controller
 { 
-        // public function __construct()
-        // {
-        //     parent::__construct();
-        //     $this->load->library('pdf');
-        // }
-
     public function index()
     {
         date_default_timezone_set('Asia/Calcutta');
         //$_SESSION['instruction']="visited";
         $data['last_date'] = '12:00 PM September 15 2020';
         $data['status'] = 'ON';
-        $data['max'] = '200';
+        $data['max'] = '250';
         $data['Total'] = $this->UsersData->allRecord();
         $Total = $data['Total'];
         $last_date = strtotime($data['last_date']);
-       
-
-        // if(!($last_date>time()&&$data['status']=='ON'&&$Total<$data['max']))
-        // {
-        //     //print_r($last_date>time()&&$data['status']=='ON'&&$Total<$data['max']);
-            $this->load->view('Users/index',$data);
-        //  }
-        // else{  
-        //     return redirect('/Users/close');
-        // }
+        if($last_date>time()&&$data['status']=='ON'&&$Total<$data['max'])
+        {
+             $this->load->view('Users/index',$data);
+        }
+        else{  
+            return redirect('/Users/close');
+        }
 
     }
 
@@ -86,73 +76,75 @@ class Users extends MY_controller
            }                                        //VALUE IN 
            $regno +=$add_it;                        //REGNO.
         
-        // //Check the email in DB...
-        //    $email = $this->input->post('email');
-        //    $existMail = $this->UsersData->fetchMail($email);
-        //    if($existMail == $email)
-        //    {
-        //        $this->session->set_flashdata('matchFound', 'Your email is already registered...');
-        //        return redirect('/Users/login');
-        //    }
-
-        $formArray = array();
-        $formArray['email'] = $this->input->post('email');
-        $formArray['pass'] = $this->input->post('pass');
-        $formArray['reg_no'] = $regno;//Registration no......
-        $formArray['gender'] = $this->input->post('gender');
-        $formArray['name'] = strtoupper($this->input->post('name'));
-        $formArray['gender'] = $this->input->post('gender');
-        $formArray['category'] = $this->input->post('category');
-        $formArray['dob'] = $this->input->post('dob');
-        $formArray['bloodgrp'] = $this->input->post('bloodgrp');
-        $formArray['class'] = $this->input->post('class');
-        $formArray['branch'] = $this->input->post('branch');
-        $formArray['whatsappno'] = $this->input->post('whatsappno');
-        $formArray['altno'] = $this->input->post('altno');
-        $formArray['fathername'] = strtoupper($this->input->post('fathername'));
-        $formArray['fatheroccupation'] = strtoupper($this->input->post('fatheroccupation'));
-        $formArray['mothername'] = strtoupper($this->input->post('mothername'));
-        $formArray['familyincome'] = $this->input->post('familyincome');
-        $formArray['caddr'] = strtoupper($this->input->post('caddr'));
-        $formArray['paddr'] = strtoupper($this->input->post('paddr'));
-        $formArray['is_nssV'] = $this->input->post('is_nssV');
-        $formArray['nssYear'] = $this->input->post('nssYear');
-        $formArray['t1'] = strtoupper($this->input->post('t1'));
-        $formArray['t1a'] = $this->input->post('t1a');
-        $formArray['t1b'] = $this->input->post('t1b');
-        $formArray['t2'] = strtoupper($this->input->post('t2'));
-        $formArray['t2a'] = $this->input->post('t2a');
-        $formArray['t2b'] = $this->input->post('t2b');
-        $formArray['t3'] = strtoupper($this->input->post('t3'));
-        $formArray['t3a'] = $this->input->post('t3a');
-        $formArray['t3b'] = $this->input->post('t3b');
-        $formArray['t4'] = strtoupper($this->input->post('t4'));
-        $formArray['t4a'] = $this->input->post('t4a');
-        $formArray['t4b'] = $this->input->post('t4b');
-        $formArray['t5'] = strtoupper($this->input->post('t5'));
-        $formArray['t5a'] = $this->input->post('t5a');
-        $formArray['t5b'] = $this->input->post('t5b');
-        $formArray['t6'] = strtoupper($this->input->post('t6'));
-        $formArray['t6a'] = $this->input->post('t6a');
-        $formArray['t6b'] = $this->input->post('t6b');
-        $formArray['hobbies'] = $this->input->post('hobbies');
-        $formArray['timestamp']=date_format($d,'Y-m-d H:i:s.u');
-        $interest_data = $this->input->post('interest');
-             if(isset($interest_data))
+        //Check the email in DB...
+        $email = $this->input->post('email');
+        $existMail = $this->UsersData->fetchMail($email);
+        print_r($existMail);
+        if($existMail == 1)
+        {
+           $this->session->set_flashdata('matchFound', 'Your email is already registered...');
+           return redirect('/Users/login');
+        }
+        else{
+            $formArray = array();
+            $formArray['email'] = $this->input->post('email');
+            $formArray['pass'] = $this->input->post('pass');
+            $formArray['reg_no'] = $regno;//Registration no......
+            $formArray['gender'] = $this->input->post('gender');
+            $formArray['name'] = strtoupper($this->input->post('name'));
+            $formArray['gender'] = $this->input->post('gender');
+            $formArray['category'] = $this->input->post('category');
+            $formArray['dob'] = $this->input->post('dob');
+            $formArray['bloodgrp'] = $this->input->post('bloodgrp');
+            $formArray['class'] = $this->input->post('class');
+            $formArray['branch'] = $this->input->post('branch');
+            $formArray['whatsappno'] = $this->input->post('whatsappno');
+            $formArray['altno'] = $this->input->post('altno');
+            $formArray['fathername'] = strtoupper($this->input->post('fathername'));
+            $formArray['fatheroccupation'] = strtoupper($this->input->post('fatheroccupation'));
+            $formArray['mothername'] = strtoupper($this->input->post('mothername'));
+            $formArray['familyincome'] = $this->input->post('familyincome');
+            $formArray['caddr'] = strtoupper($this->input->post('caddr'));
+            $formArray['paddr'] = strtoupper($this->input->post('paddr'));
+            $formArray['is_nssV'] = $this->input->post('is_nssV');
+            $formArray['nssYear'] = $this->input->post('nssYear');
+            $formArray['t1'] = strtoupper($this->input->post('t1'));
+            $formArray['t1a'] = $this->input->post('t1a');
+            $formArray['t1b'] = $this->input->post('t1b');
+            $formArray['t2'] = strtoupper($this->input->post('t2'));
+            $formArray['t2a'] = $this->input->post('t2a');
+            $formArray['t2b'] = $this->input->post('t2b');
+            $formArray['t3'] = strtoupper($this->input->post('t3'));
+            $formArray['t3a'] = $this->input->post('t3a');
+            $formArray['t3b'] = $this->input->post('t3b');
+            $formArray['t4'] = strtoupper($this->input->post('t4'));
+            $formArray['t4a'] = $this->input->post('t4a');
+            $formArray['t4b'] = $this->input->post('t4b');
+            $formArray['t5'] = strtoupper($this->input->post('t5'));
+            $formArray['t5a'] = $this->input->post('t5a');
+            $formArray['t5b'] = $this->input->post('t5b');
+            $formArray['t6'] = strtoupper($this->input->post('t6'));
+            $formArray['t6a'] = $this->input->post('t6a');
+            $formArray['t6b'] = $this->input->post('t6b');
+            $formArray['hobbies'] = $this->input->post('hobbies');
+            $formArray['timestamp']=date_format($d,'Y-m-d H:i:s.u');
+            $interest_data = $this->input->post('interest');
+            if(isset($interest_data))
             {
                 // Seprating value by comma (, )
                 $interest = implode(', ',$this->input->post('interest'));
             }
-
             else {
                 $interest = NULL;
             }
             $formArray['interest'] = $interest;
-        $this->UsersData->registerUser($formArray);
-       // return redirect('/Users/generate_pdf');
-       $this->session->set_flashdata('success','Registration successful...');
-       return redirect('/Users/login');
-        
+            //print_r($formArray);
+           // exit;
+            $this->UsersData->registerUser($formArray);
+            // return redirect('/Users/generate_pdf');
+            $this->session->set_flashdata('success','Registration successful...');
+            return redirect('/Users/login');
+        }  
     }
 
     public function loginForm()
@@ -208,26 +200,5 @@ class Users extends MY_controller
         
 
     }
-
-    // public function pdf_download()
-    // {
-    //       if(!$this->session->userdata('loginUser'))// When unauthorized access of pdf form
-    //      {
-    //          return redirect('/Users/login');
-    //      }
-        
-    //      else{
-    //         $this->load->library('pdf');
-    //         $this->pdf->loadHtml('Users/generate_pdf');
-    //         // $customPaper = array(0,0,570,570);
-    //         //$this->pdf->set_paper($customPaper);
-    //         $this->pdf->setPaper('A4','portrait');//landscape
-    //         $this->pdf->render();
-    //         $this->pdf->stream("Nss_Registration.pdf", array('Attachment'=>0));
-    //         //'Attachment'=>0 for view and 'Attachment'=>1 for download file  
-    //          return redirect('Users/generate_pdf');
-    //      }
-    // }
-    //end
-
+    
 }
