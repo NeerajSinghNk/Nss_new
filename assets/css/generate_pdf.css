@@ -1,0 +1,20 @@
+li {
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-top: 6px;
+}
+
+thead tr {
+    font-weight: 700;
+}
+
+.container {
+    padding: 5px;
+    min-width: 850px;
+}
+
+.data {
+    font-size: 18px;
+    font-family: serif;
+    border-bottom: 1px solid black;
+}
