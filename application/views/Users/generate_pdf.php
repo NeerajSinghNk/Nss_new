@@ -384,7 +384,7 @@
 								?>
 								<button id="mybtn" class="btn btn-success" onclick="hideme();window.print();">Print</button>
 								<br>
-								<a href="<?= base_url('Users/pdf_download'); ?>"><button id="mybtn2" class="btn btn-success" style="margin-top: 10px;">View in pdf</button></a>
+								<!-- <a href="<?= base_url('Users/pdf_download'); ?>"><button id="mybtn2" class="btn btn-success" style="margin-top: 10px;">View in pdf</button></a> -->
 								<br>
 								<a href="<?= base_url('Users/logout'); ?>"><button id="mybtn2" class="btn btn-info" style="margin-top: 10px;">Logout</button></a>
 									<?php }?>

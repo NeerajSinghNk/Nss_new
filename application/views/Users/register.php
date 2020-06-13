@@ -13,6 +13,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="<?= base_url('assets/css/register.css');?>" rel="stylesheet">
 	<script src="<?= base_url('assets/js/register.js');?>" type="text/javascript"></script>
+
+	<!-- Signature links -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet"> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="<?= base_url('assets/js/jquery.signature.min.js')?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/jquery.signature.css')?>">
+	<style>
+
+	.kbw-signature { width: 400px; height: 200px;}
+
+	#sig canvas{
+
+		width: 100% !important;
+
+		height: auto;
+
+	}
+
+</style> -->
+
 </head>
 <body onload="load()">
 	<div class="container-fluid ">
@@ -438,6 +460,23 @@
 			</div>
 			<!-- Signature Upload-->
 
+			<!-- <div class="col-md-12">
+
+				<label class="" for=""><i>Signature Below:</i></label>
+
+				<br/>
+
+				<div id="sig" ></div>
+
+				<br/>
+
+				<button id="clear">Clear Signature</button>
+
+				<textarea id="signature64" name="signed" style="display: none"></textarea>
+
+			</div> -->
+
+			<!-- Submit Button -->
 			<div align="center" style="margin-top: 50px;">
 				<!-- <button id="back" class="btn btn-primary">Go Back</button> -->
 				<button name="submit" class="btn btn-success" id="submit_button">Submit</button>
@@ -447,5 +486,21 @@
 
         <?php echo form_close();?>
 	</div>
+	<!-- Signature Script -->
+	<script type="text/javascript">
+
+    var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
+
+    $('#clear').click(function(e) {
+
+        e.preventDefault();
+
+        sig.signature('clear');
+
+        $("#signature64").val('');
+
+    });
+
+</script>
 </body>
 </html>
