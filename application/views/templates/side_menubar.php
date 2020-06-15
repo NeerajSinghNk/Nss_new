@@ -6,16 +6,17 @@
       <ul class="sidebar-menu" data-widget="tree">
         
         <li id="dashboardMainMenu">
-          <a href="<?php echo base_url('Admin/dashboard') ?>">
+          <a href="<?php echo base_url('Dashboard/index') ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
 
         
-        
-
+        <li id="createUserSubNav"><a href="<?php echo base_url('Dashboard/list')?>" ><i class="fa fa-circle-o"></i><span>Overall Responses</span></a></li>
+        <li id="createUserSubNav"><a href="#" ><i class="fa fa-circle-o"></i><span>Create Registration</span></a></li>
+        <!-- <li id="manageUserSubNav"><a href="<?php echo base_url('Dashboard/update') ?>" ><i class="fa fa-circle-o"></i><span>Update Registration</span></a></li> -->
         <li><a href="<?php echo base_url('Admin/logout') ?>"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a></li>
-
+        
       </ul>
     </section>
     <!-- /.sidebar -->

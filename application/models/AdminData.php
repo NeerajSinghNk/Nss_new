@@ -25,12 +25,6 @@ class AdminData extends CI_Model
 	/* 
 		This function checks if the email and password matches with the database
 	*/
-	// public function login($email, $password) {
-	// 	//SELECT email FROM users WHERE email = '$email' and pass = '$password'
-    //     $q = $this->db->where(['email'=>$email,'pass'=>$password])
-    //             ->get('users');
-    //     return $q->num_rows();
-	// }
 
 	public function login($email, $password) {
 		if($email && $password) {
@@ -47,6 +41,48 @@ class AdminData extends CI_Model
 			}
 		}
 	}
+
+	public function total_responses()
+	{
+		//SELECT count(*) FROM `volunteer` 
+		return $this->db->count_all_results('volunteer');
+	}
+
+	public function all()
+	{
+		$users = $this->db->get('volunteer')->result_array();
+		return $users;
+	}
+
+	public function getUser($userID)
+	{
+		$this->db->where('sno', $userID);
+		$user = $this->db->get('volunteer')->row_array();
+		return $user;
+	}
+
+	public function updateuser($userID, $formArray)
+	{
+		$this->db->where('sno', $userID);
+		$this->db->update('volunteer', $formArray);
+	}
+
+	
+
+	public function deleterow($userID){
+		$sql_query=$this->db->where('sno', $userID)
+						->delete('volunteer');
+				   if($sql_query){
+		$this->session->set_flashdata('success', 'Record delete successfully');
+		redirect('Dashboard/list');
+			}
+			else{
+				$this->session->set_flashdata('failure', 'Somthing went worng. Error!!');
+				redirect('Dashboard/list');
+			}
+		}
+
+
 }
 
 
