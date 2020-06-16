@@ -42,11 +42,35 @@ class AdminData extends CI_Model
 		}
 	}
 
+	//overall response
+
 	public function total_responses()
 	{
 		//SELECT count(*) FROM `volunteer` 
 		return $this->db->count_all_results('volunteer');
 	}
+
+	//current response
+
+	public function currentResponse_total()
+	{
+		$q = $this->db->where('timestamp', idate('Y'));
+		return $q->count_all_results('volunteer');
+	}
+
+
+// 	public function fetch_list($limit, $start) {
+//         $this->db->limit($limit, $start);
+//         $query = $this->db->get("volunteer");
+
+//         if ($query->num_rows() > 0) {
+//             foreach ($query->result() as $row) {
+//                 $data[] = $row;
+//             }
+//             return $data;
+//         }
+//         return false;
+//    }
 
 	public function all()
 	{
@@ -67,8 +91,6 @@ class AdminData extends CI_Model
 		$this->db->update('volunteer', $formArray);
 	}
 
-	
-
 	public function deleterow($userID){
 		$sql_query=$this->db->where('sno', $userID)
 						->delete('volunteer');
@@ -80,8 +102,81 @@ class AdminData extends CI_Model
 				$this->session->set_flashdata('failure', 'Somthing went worng. Error!!');
 				redirect('Dashboard/list');
 			}
-		}
+	}
+	
+	public function currentResponses()
+	{
+		date_default_timezone_set('Asia/Calcutta');
+		$this->db->where('timestamp', idate('Y'));
+		$currentRes = $this->db->get('volunteer')->result_array();
+		return $currentRes;
+	}
 
+	//Total summary session
+
+	public function getTotalmale()
+	{
+		return $this->db->where('gender', 'Male')->count_all_results('volunteer');
+	}
+
+	public function getTotalfemale()
+	{
+		return $this->db->where('gender', 'Female')->count_all_results('volunteer');
+		
+	}
+
+	public function getTotalSummary()
+	{
+		return $this->db->count_all_results('volunteer');
+	}
+
+	public function year1()
+	{
+		return $this->db->where("class", "1st")->count_all_results('volunteer');
+	}
+
+	public function year2()
+	{
+		return $this->db->where("class", "2nd")->count_all_results('volunteer');
+	}
+
+	public function year3()
+	{
+		return $this->db->where("class", "3rd")->count_all_results('volunteer');
+	}
+
+	public function year4()
+	{
+		return $this->db->where("class", "4th")->count_all_results('volunteer');
+	}
+
+	
+	//Google pie chart function
+
+	public function category()
+	{
+		$sql="SELECT category, count(*) FROM `volunteer` GROUP BY category";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();         // Returns the result as an array
+		return $result;
+
+	}
+
+	public function nssYear()
+	{
+		$sql="SELECT nssYear, count(*) FROM `volunteer` GROUP BY nssYear";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();         // Returns the result as an array
+		return $result;
+	}
+
+	public function branch()
+	{
+		$sql="SELECT branch, count(*) FROM `volunteer` GROUP BY branch";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();         // Returns the result as an array
+		return $result;
+	}
 
 }
 

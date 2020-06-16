@@ -36,14 +36,14 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><?php //echo $total_responses ?></h3>
+                <h3><?php echo $currentRespo ?></h3>
 
-                <p>Current Responses</p>
+                <p>Current Responses (<?php echo date("Y");?>)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-android-people"></i>
               </div>
-              <a href="<?php //echo base_url('orders/') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url('Dashboard/currentList') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -51,14 +51,14 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3><?php //echo $total_users; ?></h3>
+                <h3><?php echo date("Y"); ?></h3>
 
-                <p>Summary</p>
+                <p>Graphical Summary</p>
               </div>
               <div class="icon">
                 <i class="ion ion-android-people"></i>
               </div>
-              <a href="<?php //echo base_url('users/') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url('Dashboard/summary') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

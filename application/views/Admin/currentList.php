@@ -9,14 +9,14 @@ $(document).ready(function(){
   });
 });
 </script>
-
+<?php date_default_timezone_set('Asia/Calcutta');?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Manage
-        <small>Overall Responses</small>
+        <small>Current Responses </small>
       </h1>
       <ol class="breadcrumb">
       <div class="card-footer small text-muted">Updated at <?php echo(date("Y-m-d H:i:s A",time()));?></div>
@@ -71,8 +71,8 @@ $(document).ready(function(){
                   <tbody id="myTable">
                   <?php
                   $cnt=1;
-                  if(!empty($users)){
-                  foreach($users as $user)
+                  if(!empty($currentRes)){
+                  foreach($currentRes as $user)
                   {
                   ?>
                       <tr>
@@ -92,12 +92,12 @@ $(document).ready(function(){
                       <td>
                   <?php
                   //for passing row id to controller
-                  echo  anchor("Dashboard/update/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')?>
+                  echo  anchor("Dashboard/updateCurrentResponse/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')?>
                   </td>
                   <td>
                   <?php
                   //for passing row id to controller
-                  echo anchor("Dashboard/delete/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
+                  echo anchor("Dashboard/deleteCurrentResponse/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
                   </td>
                   </tr>
                   <?php
