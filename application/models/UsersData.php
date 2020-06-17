@@ -26,6 +26,7 @@ class UsersData extends CI_Model
     {
         //"SELECT count(*) FROM `volunteer` WHERE `gender`= '$gender'";
         $this->db->where('gender', $gender);
+        $this->db->where('timestamp', idate('Y'));
         return $this->db->count_all_results('volunteer');
     }
 

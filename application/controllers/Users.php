@@ -72,9 +72,12 @@ class Users extends MY_controller
         $micro = sprintf("%06d",($t - floor($t)) * 1000000);
         $d = new DateTime( date('Y-m-d H:i:s.'.$micro, $t) );
 
+        
+
         $gender = $this->input->post('gender');     //
         $add_it = $this->UsersData->regNo($gender); //REGISTRATION
-           if($gender == 'Male')                    //NO.
+        //print_r($add_it);  
+        if($gender == 'Male')                    //NO.
            {                                        //GENERATE 
                $regno = 1001;                       //BY
            }elseif($gender == 'Female'){            //  THIS    
@@ -85,7 +88,7 @@ class Users extends MY_controller
         //Check the email in DB...
         $email = $this->input->post('email');
         $existMail = $this->UsersData->fetchMail($email);
-        print_r($existMail);
+        //print_r($existMail);
         if($existMail == 1)
         {
            $this->session->set_flashdata('matchFound', 'Your email is already registered...');
@@ -156,7 +159,7 @@ class Users extends MY_controller
         //    $file = $folderPath . uniqid() . '.'.$image_type;
         //    file_put_contents($file, $image_base64);
 
-
+            
             $this->UsersData->registerUser($formArray);
             // return redirect('/Users/generate_pdf');
             $this->session->set_flashdata('success','Registration successful...');

@@ -68,6 +68,7 @@ class AdminData extends CI_Model
 
 	public function all()
 	{
+		$this->db->order_by('name', 'ASC');
 		$users = $this->db->get('volunteer')->result_array();
 		return $users;
 	}
@@ -90,18 +91,18 @@ class AdminData extends CI_Model
 						->delete('volunteer');
 				   if($sql_query){
 		$this->session->set_flashdata('success', 'Record delete successfully');
-		redirect('Dashboard/list');
+		redirect('Dashboard/currentList');
 			}
 			else{
 				$this->session->set_flashdata('failure', 'Somthing went worng. Error!!');
-				redirect('Dashboard/list');
+				redirect('Dashboard/currentList');
 			}
 	}
 	
 	public function currentResponses()
 	{
 		date_default_timezone_set('Asia/Calcutta');
-		$this->db->where('timestamp', idate('Y'));
+		$this->db->where('timestamp', idate('Y'))->order_by('name', 'ASC');
 		$currentRes = $this->db->get('volunteer')->result_array();
 		return $currentRes;
 	}
