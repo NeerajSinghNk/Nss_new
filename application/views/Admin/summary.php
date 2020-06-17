@@ -92,7 +92,7 @@ print_r($category); ?>   -->
     });
   </script>
 
-
+<!-- This script is used for student year -->
     <script type="text/javascript">
         // Load google charts
         google.charts.load('current', {'packages':['corechart']});
@@ -117,6 +117,7 @@ print_r($category); ?>   -->
         }
     </script>
   
+  <!-- this script is used for gender -->
   <script type="text/javascript">
         // Load google charts
         google.charts.load('current', {'packages':['corechart']});
@@ -139,6 +140,7 @@ print_r($category); ?>   -->
         }
     </script>
 
+<!-- This script is used for category of student -->
 <script type="text/javascript">
 	
   // Load google charts
@@ -167,6 +169,7 @@ print_r($category); ?>   -->
   </script>
    
 
+<!-- This script is used for NSS joining year -->
    <script type="text/javascript">
 	
     // Load google charts
@@ -196,6 +199,7 @@ print_r($category); ?>   -->
   </script>
   
 
+  <!-- This script is used for branch -->
   <script type="text/javascript">
 	
   // Load google charts

@@ -6,7 +6,13 @@ class Users extends MY_controller
     {
         date_default_timezone_set('Asia/Calcutta');
         //$_SESSION['instruction']="visited";
-        $data['last_date'] = '12:00 PM September 15 2020';
+        $resDate = $this->UsersData->fetchRegDate();
+        $respo = '';
+        foreach($resDate as $row)
+        {
+            $respo = $row['regisDate'];
+        }
+        $data['last_date'] = $respo;
         $data['status'] = 'ON';
         $data['max'] = '250';
         $data['Total'] = $this->UsersData->allRecord();

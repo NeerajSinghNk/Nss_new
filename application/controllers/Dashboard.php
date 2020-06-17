@@ -56,21 +56,6 @@ class Dashboard extends Admin_Controller
 		
 	}
 
-	//Page list
-
-	// public function pageList()
-	// {
-	// 	$this->load->library('pagination');
-
-	// 	$config['base_url'] = 'Dashboard/list';
-	// 	$config['total_rows'] = $this->AdminData->total_responses();
-	// 	$config['per_page'] = 7;
-	// 	$config["uri_segment"] = 3;
-	// 	$this->pagination->initialize($config);
-
-	// 	$page = $this->AdminData->getList($config['per_page'], $this->uri->segment(3)); 
-	// 	$this->render_template('Admin/list', $page);
-	// }
 
 	//Current responses function
 	
@@ -120,7 +105,21 @@ class Dashboard extends Admin_Controller
 		$this->render_template('Admin/summary', $summaryRec);
 	}
 
-	//Google$summaryRec chart function
+	
+	//Updatin$this->render_template('Admin/nssRegisUpdate');g registration date of NSS candidate
+
+	public function nssRegisUpdate()
+	{
+		$dateTime = $this->input->post('dateTime');
+		if($dateTime)
+		{
+			$this->AdminData->registerVar($dateTime);
+			$this->session->set_flashdata('success','Date & Time Successfully updated...');
+			
+		}
+
+		$this->render_template('Admin/nssRegisUpdate');
+	}
 
 }
 

@@ -63,5 +63,11 @@ class UsersData extends CI_Model
     //     $this->db->where('reg_no', $user_id);
     //     return $this->db->get('volunteer');
     // }
+
+    public function fetchRegDate()
+    {
+        $users = $this->db->get('registerVar')->result_array();
+		return $users;
+    }
     
 }

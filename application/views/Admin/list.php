@@ -65,8 +65,8 @@ $(document).ready(function(){
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
                         <th>Gender</th>
-                        <th width="60">Edit</th>
-                        <th width="100">Delete</th>
+                        <th width="60">Action</th>
+                        <!-- <th width="100">Delete</th> -->
                   </thead>
                   <tbody id="myTable">
                   <?php
@@ -92,14 +92,14 @@ $(document).ready(function(){
                       <td>
                   <?php
                   //for passing row id to controller
-                  echo  anchor("Dashboard/update/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')?>
+                  echo  anchor("Dashboard/delete/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
                   </td>
-                  <td>
+                  <!-- <td> -->
                   <?php
                   //for passing row id to controller
-                  echo anchor("Dashboard/delete/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
-                  </td>
-                  </tr>
+                  //echo anchor("Dashboard/update/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
+                  <!-- </td> -->
+                  <!-- </tr> -->
                   <?php
                   // for serial number increment
                   $cnt++;
@@ -107,17 +107,12 @@ $(document).ready(function(){
                   </tbody>
                   </table>                
 
-                  
+                  <p><?php echo $this->pagination->create_links(); ?></p>
 
 
             </div>
         </div>
     </div>
-
-          
-           
-                
-              
 
             
         </div>

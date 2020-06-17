@@ -58,19 +58,13 @@ class AdminData extends CI_Model
 		return $q->count_all_results('volunteer');
 	}
 
+	//Use for pagination in list page
+	public function fetch_list($limit, $start) {
+        $this->db->limit($limit, $start);
+		$query = $this->db->get("volunteer");
+		return $query->result();
 
-// 	public function fetch_list($limit, $start) {
-//         $this->db->limit($limit, $start);
-//         $query = $this->db->get("volunteer");
-
-//         if ($query->num_rows() > 0) {
-//             foreach ($query->result() as $row) {
-//                 $data[] = $row;
-//             }
-//             return $data;
-//         }
-//         return false;
-//    }
+   }
 
 	public function all()
 	{
@@ -176,6 +170,23 @@ class AdminData extends CI_Model
 		$query = $this->db->query($sql);
 		$result = $query->result_array();         // Returns the result as an array
 		return $result;
+	}
+
+	//Insert a registration date in RegisterVar table
+	public function registerVar($dateTime)
+	{
+		$this->db->set('regisDate', $dateTime);
+		$this->db->where('id', 1);
+		$this->db->update('registerVar'); // gives UPDATE `mytable` SET `registerDate` = 'dateTime' WHERE `id` = 1
+		
+		// if($sql_query){
+		// 	$this->session->set_flashdata('success', 'Date & Time Updated Successfully');
+		// 	redirect('Dashboard/nssRegisUpdate');
+		// 		}
+		// 		else{
+		// 			$this->session->set_flashdata('failure', 'Somthing went worng. Error!!');
+		// 			redirect('Dashboard/nssRegisUpdate');
+		// 		}
 	}
 
 }
