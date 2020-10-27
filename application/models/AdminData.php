@@ -174,9 +174,11 @@ class AdminData extends CI_Model
 	}
 
 	//Insert a registration date in RegisterVar table
-	public function registerVar($dateTime)
+	public function registerVar($dateTime,$boys,$girls)
 	{
 		$this->db->set('regisDate', $dateTime);
+		$this->db->set('boys', $boys);
+		$this->db->set('girls', $girls);
 		$this->db->where('id', 1);
 		$this->db->update('registerVar'); // gives UPDATE `mytable` SET `registerDate` = 'dateTime' WHERE `id` = 1
 		
@@ -189,6 +191,7 @@ class AdminData extends CI_Model
 		// 			redirect('Dashboard/nssRegisUpdate');
 		// 		}
 	}
+
 
 }
 

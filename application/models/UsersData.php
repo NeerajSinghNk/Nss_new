@@ -71,4 +71,25 @@ class UsersData extends CI_Model
 		return $users;
     }
     
+
+    	// This function will get the total no. of boys and girls
+	
+	public function getBoysGirls(){
+		return $this->db->get('registerVar')->result_array();
+
+    }
+    
+
+    public function getBoysReg(){
+        return $this->db->select('boys')->get('registerVar');
+    }
+
+    public function getGirlsReg(){
+        return $this->db->select('girls')->get('registerVar');
+    }
+
+    public function getRegDate(){
+        return $this->db->select('regisDate')->get('registerVar');
+    }
+
 }

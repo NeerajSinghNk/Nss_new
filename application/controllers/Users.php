@@ -6,15 +6,19 @@ class Users extends MY_controller
     {
         date_default_timezone_set('Asia/Calcutta');
         //$_SESSION['instruction']="visited";
+        // $boysGirls = $this->UserData->getBoysGirls();
         $resDate = $this->UsersData->fetchRegDate();
         $respo = '';
         foreach($resDate as $row)
         {
             $respo = $row['regisDate'];
         }
+        $boys = $this->UsersData->getBoysReg();
+        $girls = $this->UsersData->getGirlsReg();
         $data['last_date'] = $respo;
         $data['status'] = 'ON';
-        $data['max'] = '250';
+        $data['max'] = $boys + $girls;
+        // print_r($data['max']);
         $data['Total'] = $this->UsersData->allRecord();
         $Total = $data['Total'];
         $last_date = strtotime($data['last_date']);

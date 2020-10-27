@@ -111,10 +111,12 @@ class Dashboard extends Admin_Controller
 	public function nssRegisUpdate()
 	{
 		$dateTime = $this->input->post('dateTime');
+		$boys = $this->input->post('boys');
+		$girls = $this->input->post('girls');
 		if($dateTime)
 		{
-			$this->AdminData->registerVar($dateTime);
-			$this->session->set_flashdata('success','Date & Time Successfully updated...');
+			$this->AdminData->registerVar($dateTime,$boys,$girls);
+			$this->session->set_flashdata('success','Registration Data Successfully updated...');
 			
 		}
 
