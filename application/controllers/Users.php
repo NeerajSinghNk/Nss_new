@@ -11,23 +11,30 @@ class Users extends MY_controller
         $respo = '';
         foreach($resDate as $row)
         {
-            $respo = $row['regisDate'];
+            $respo = explode('-',$row['regisDate']);
         }
+        $data['start_at'] = date("Y-m-d H:i:s", strtotime(trim($respo[0])));
+        $data['end_at']   = date("Y-m-d H:i:s", strtotime(trim($respo[1])));
+        $currentDateTime = date('Y-m-d h:i:s');
+        
         $boys = $this->UsersData->getBoysReg();
         $girls = $this->UsersData->getGirlsReg();
-        $data['last_date'] = $respo;
+        
+        $regStatus = $this->UsersData->getStatus();
+       $formStatus = implode("",$regStatus[0]);
         $data['status'] = 'ON';
-        $data['max'] = $boys + $girls;
-        // print_r($data['max']);
-        $data['Total'] = $this->UsersData->allRecord();
-        $Total = $data['Total'];
-        $last_date = strtotime($data['last_date']);
-        if($last_date>time()&&$data['status']=='ON'&&$Total<$data['max'])
+       
+        // print_r($data);
+      
+        if($data['start_at'] <= $currentDateTime && $data['end_at'] >= $currentDateTime && $data['status']== $formStatus)
         {
+           
              $this->load->view('Users/index',$data);
         }
         else{  
+           
             return redirect('/Users/close');
+        
         }
 
     }
@@ -37,16 +44,22 @@ class Users extends MY_controller
         
         $data['MaleTotal'] = $this->UsersData->maleRecord();
         $data['FemaleTotal'] = $this->UsersData->femaleRecord();
+
+        $boys = $this->UsersData->getBoysReg();
+        $girls = $this->UsersData->getGirlsReg();
         
+        $TotalBoy = implode("",$boys[0]);
+        $TotalGirl = implode("",$girls[0]);
+
         $boys_disabled="";
         $girls_disabled="";
         $disabled_msg = "";
-        if($data['MaleTotal'] > 150)
+        if($data['MaleTotal'] >= $TotalBoy)
         {
             $boys_disabled = "disabled";
             $disabled_msg = "Notice:Registration for boys has been closed";
         }
-        if($data['FemaleTotal'] > 100)
+        if($data['FemaleTotal'] >= $TotalGirl)
         {
             $girls_disabled = "disabled";
             $disabled_msg = "Notice:Registration for girls has been closed";
@@ -150,7 +163,12 @@ class Users extends MY_controller
             else {
                 $interest = NULL;
             }
+            $year1 = idate('Y');
+            $year2 = idate('y')+1;
+
             $formArray['interest'] = $interest;
+            $formArray['session'] = ($year1."-".$year2);
+            
             //print_r($formArray);
            // exit;
             // Signature upload code....

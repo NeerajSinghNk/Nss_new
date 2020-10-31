@@ -80,7 +80,7 @@ $(document).ready(function() {
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
                         <th>Gender</th>
-                        <th width="60">Edit</th>
+                        <th width="60">Session</th>
                         <th width="100">Delete</th>
                   </thead>
                   <tbody id="myTable">
@@ -107,8 +107,11 @@ $(document).ready(function() {
                       <td>
                   <?php
                   //for passing row id to controller
-                  echo  anchor("Dashboard/updateCurrentResponse/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')?>
-                  </td>
+                  // echo  anchor("Dashboard/updateCurrentResponse/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')
+                  echo $user['session']
+                  ?>
+                  
+                 </td>
                   <td>
                   <?php
                   //for passing row id to controller

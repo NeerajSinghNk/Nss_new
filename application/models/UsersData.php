@@ -5,12 +5,18 @@ class UsersData extends CI_Model
     public function allRecord()
     {
        //SELECT count(*) FROM `volunteer` 
+       $year1 = idate('Y');
+       $year2 = idate('y')+1;
+       $this->db->where('session',$year1."-".$year2);
        return $this->db->count_all_results('volunteer');
     }
 
     public function maleRecord()
     {
         //SELECT count(*) FROM `volunteer` WHERE gender ='Male'
+        $year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $this->db->where('session',$year1."-".$year2);
         $this->db->where('gender','Male');
         return $this->db->count_all_results('volunteer');
     }
@@ -18,6 +24,9 @@ class UsersData extends CI_Model
     public function femaleRecord()
     {
         //SELECT count(*) FROM `volunteer` WHERE gender ='female'
+        $year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $this->db->where('session',$year1."-".$year2);
         $this->db->where('gender','Female');
         return $this->db->count_all_results('volunteer');
     }
@@ -74,22 +83,30 @@ class UsersData extends CI_Model
 
     	// This function will get the total no. of boys and girls
 	
-	public function getBoysGirls(){
-		return $this->db->get('registerVar')->result_array();
+	// public function getBoysGirls(){
+	// 	return $this->db->get('registerVar')->result_array();
 
-    }
+    // }
     
 
     public function getBoysReg(){
-        return $this->db->select('boys')->get('registerVar');
+        return $this->db->select('boys')->where('id', 1)->get('registerVar')->result_array();
     }
 
     public function getGirlsReg(){
-        return $this->db->select('girls')->get('registerVar');
+        return $this->db->select('girls')->where('id', 1)->get('registerVar')->result_array();
     }
 
     public function getRegDate(){
-        return $this->db->select('regisDate')->get('registerVar');
+        return $this->db->select('regisDate')->where('id', 1)->get('registerVar')->result_array();
+    }
+
+    public function getStatus(){
+        return $this->db->select('status')->where('id', 1)->get('registerVar')->result_array();
+    }
+
+    public function getSumBoysGirls(){
+        $this->db->select('SUM(boys) + SUM(girls) as total', FALSE)->get('registerVar')->result_array();
     }
 
 }
