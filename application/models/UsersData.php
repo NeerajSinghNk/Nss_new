@@ -34,6 +34,7 @@ class UsersData extends CI_Model
     public function regNo($gender)
     {
         //"SELECT count(*) FROM `volunteer` WHERE `gender`= '$gender'";
+        // $this->db->where('reg_no IS NOT NULL');
         $this->db->where('gender', $gender);
         $this->db->where('timestamp', idate('Y'));
         return $this->db->count_all_results('volunteer');
@@ -108,5 +109,24 @@ class UsersData extends CI_Model
     public function getSumBoysGirls(){
         $this->db->select('SUM(boys) + SUM(girls) as total', FALSE)->get('registerVar')->result_array();
     }
+
+    public function getGender($id){
+        $res = $this->db->select('gender')->where('sno', $id)->get('volunteer')->row_array();
+        // print_r($res);
+        return $res;
+    }
+
+    //Approved review application
+
+	public function approvedReviewForm($id, $regno){
+       
+        
+        $this->db->set('reg_no', $regno);
+        $this->db->set('sno', $id);
+        $this->db->where('sno', $id);
+        $this->db->update('volunteer');
+
+        // $sql = "INSERT into volunteer('reg_no') values ($regno) where sno = $id";
+	}
 
 }

@@ -107,7 +107,7 @@ $(document).ready(function() {
                       <td>
                   <?php
                   //for passing row id to controller
-                  echo  anchor("Dashboard/delete/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
+                  echo  anchor("Dashboard/deleteList/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
                   </td>
                   <!-- <td> -->
                   <?php

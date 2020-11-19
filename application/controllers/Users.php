@@ -91,16 +91,16 @@ class Users extends MY_controller
 
         
 
-        $gender = $this->input->post('gender');     //
-        $add_it = $this->UsersData->regNo($gender); //REGISTRATION
-        //print_r($add_it);  
-        if($gender == 'Male')                    //NO.
-           {                                        //GENERATE 
-               $regno = 1001;                       //BY
-           }elseif($gender == 'Female'){            //  THIS    
-               $regno = 2001;                       //CODE
-           }                                        //VALUE IN 
-           $regno +=$add_it;                        //REGNO.
+        // $gender = $this->input->post('gender');     //
+        // $add_it = $this->UsersData->regNo($gender); //REGISTRATION
+        // //print_r($add_it);  
+        // if($gender == 'Male')                    //NO.
+        //    {                                        //GENERATE 
+        //        $regno = 1001;                       //BY
+        //    }elseif($gender == 'Female'){            //  THIS    
+        //        $regno = 2001;                       //CODE
+        //    }                                        //VALUE IN 
+        //    $regno +=$add_it;                        //REGNO.
         
         //Check the email in DB...
         $email = $this->input->post('email');
@@ -115,7 +115,7 @@ class Users extends MY_controller
             $formArray = array();
             $formArray['email'] = $this->input->post('email');
             $formArray['pass'] = $this->input->post('pass');
-            $formArray['reg_no'] = $regno;//Registration no......
+            // $formArray['reg_no'] = $regno;//Registration no......
             $formArray['gender'] = $this->input->post('gender');
             $formArray['name'] = strtoupper($this->input->post('name'));
             $formArray['gender'] = $this->input->post('gender');
@@ -188,6 +188,32 @@ class Users extends MY_controller
             return redirect('/Users/login');
         }  
     }
+
+
+    // //Approved incomming form
+
+    // public function approvedReview($id){
+    //     // $regno = 0;
+    //     // $add_it = '';
+    //     $genders = $this->UsersData->getGender($id);   
+    //     foreach($genders as $gender){
+    //         $add_it = $this->UsersData->regNo($gender['gender']); //REGISTRATION
+        
+    //         if($gender['gender'] == 'Male')                    //NO.
+    //            {                                        //GENERATE 
+    //                $regno = 1000;                       //BY
+    //            }elseif($gender['gender'] == 'Female'){            //  THIS    
+    //                $regno = 2000;                       //CODE
+    //            }                                        //VALUE IN 
+    //            $regno +=$add_it;                        //REGNO.
+    //         // print_r($add_it);
+    //         $this->UsersData->approvedReviewForm($id, $regno);
+    //         // return redirect('/Admin/reviewList');
+    //     }
+           
+       
+        
+    // }
 
     public function loginForm()
     {

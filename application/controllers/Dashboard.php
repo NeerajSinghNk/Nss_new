@@ -47,10 +47,10 @@ class Dashboard extends Admin_Controller
 	}
 
 	
-	public function delete($userID)
+	public function deleteList($userID)
 	{
 		
-			$this->AdminData->deleterow($userID);
+			$this->AdminData->deleteListRow($userID);
 			//$this->session->set_flashdata('success', 'Record deleted successfully...');
 			$this->render_template('Admin/list');
 		
@@ -122,6 +122,50 @@ class Dashboard extends Admin_Controller
 		}
 
 		$this->render_template('Admin/nssRegisUpdate');
+	}
+
+	//This function is used to show review application
+
+	public function showReview(){
+		$review = $this->AdminData->reviewShow();
+		// print_r($review);
+		$data = array();
+		$data['review'] = $review;
+		$this->render_template('Admin/reviewList', $data);
+	}
+
+	 //Approved incomming form
+
+	 public function approvedReview($id){
+        // $regno = 0;
+        // $add_it = '';
+		$gender = $this->UsersData->getGender($id);
+		// print_r($gender['gender']);
+		// print_r($gender[0]['gender']);   
+        // foreach($genders as $gender){
+            $add_it = $this->UsersData->regNo($gender['gender']); //REGISTRATION
+        
+            if($gender['gender'] == 'Male')                    //NO.
+               {                                        //GENERATE 
+                   $regno = 1000;                       //BY
+               }elseif($gender['gender'] == 'Female'){            //  THIS    
+                   $regno = 2000;                       //CODE
+               }                                        //VALUE IN 
+			   $regno +=$add_it;      
+			//    $add_it--;                  //REGNO.
+            // print_r($add_it);
+           
+        // }
+		$this->UsersData->approvedReviewForm($id, $regno);
+		$this->render_template('Admin/reviewList');
+       
+        
+    }
+
+	//This function is used to review the application and generate application number
+
+	public function reviewApplication(){
+		
 	}
 
 }

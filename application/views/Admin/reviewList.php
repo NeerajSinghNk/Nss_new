@@ -31,7 +31,7 @@ $(document).ready(function() {
     <section class="content-header">
       <h1>
         Manage
-        <small>Current Responses </small>
+        <small>Review Application </small>
       </h1>
       <ol class="breadcrumb">
       <div class="card-footer small text-muted">Updated at <?php echo(date("Y-m-d H:i:s A",time()));?></div>
@@ -68,7 +68,7 @@ $(document).ready(function() {
                 <table id="mytable" class="display" style="width:100%">
                   <thead>
                   <!-- <th>Timestamp</th> -->
-                       
+                        <!-- <th><input type = "checkbox" id="check" name="check"></th> -->
                         <th>#</th>
                         <th>Reg. No.</th>
                         <th>Name</th>
@@ -82,17 +82,16 @@ $(document).ready(function() {
                         <th>Email Id</th>
                         <th>Gender</th>
                         <th width="60">Session</th>
-                        <th width="100">Delete</th>
+                        <th width="100">Review</th>
                   </thead>
                   <tbody id="myTable">
                   <?php
                   $cnt=1;
-                  if(!empty($currentRes)){
-                  foreach($currentRes as $user)
+                  if(!empty($review)){
+                  foreach($review as $user)
                   {
                   ?>
                       <tr>
-                        <!-- <td><input type = "checkbox" id="check" name="check"></td> -->
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
                         <td><?php echo $user['reg_no']?></td>
@@ -117,7 +116,8 @@ $(document).ready(function() {
                   <td>
                   <?php
                   //for passing row id to controller
-                  echo anchor("Dashboard/deleteCurrentResponse/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
+                  
+                  echo anchor("Dashboard/approvedReview/{$user['sno']}",' ','class="glyphicon glyphicon-check btn-success btn-xs"')?>
                   </td>
                   </tr>
                   <?php

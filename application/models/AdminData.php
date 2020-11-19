@@ -54,6 +54,7 @@ class AdminData extends CI_Model
 
 	public function currentResponse_total()
 	{
+		$q = $this->db->where('reg_no IS NOT NULL');
 		$q = $this->db->where('timestamp', idate('Y'));
 		return $q->count_all_results('volunteer');
 	}
@@ -98,14 +99,39 @@ class AdminData extends CI_Model
 				redirect('Dashboard/currentList');
 			}
 	}
+
+	public function deleteListRow($userID){
+		$sql_query=$this->db->where('sno', $userID)
+						->delete('volunteer');
+				   if($sql_query){
+		$this->session->set_flashdata('success', 'Record delete successfully');
+		redirect('Dashboard/list');
+			}
+			else{
+				$this->session->set_flashdata('failure', 'Somthing went worng. Error!!');
+				redirect('Dashboard/list');
+			}
+	}
 	
 	public function currentResponses()
 	{
 		date_default_timezone_set('Asia/Calcutta');
+		$this->db->where('reg_no IS NOT NULL');
 		$this->db->where('timestamp', idate('Y'))->order_by('name', 'ASC');
 		$currentRes = $this->db->get('volunteer')->result_array();
 		return $currentRes;
 	}
+
+	//review application
+	public function reviewShow(){
+		// $res = '';
+		$this->db->where('reg_no')->order_by('name', 'ASC');
+		$review = $this->db->get('volunteer')->result_array();
+		// print_r($review);
+		return $review;
+	}
+
+	
 
 	//Total summary session
 
