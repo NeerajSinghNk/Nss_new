@@ -34,9 +34,12 @@ class UsersData extends CI_Model
     public function regNo($gender)
     {
         //"SELECT count(*) FROM `volunteer` WHERE `gender`= '$gender'";
-        // $this->db->where('reg_no IS NOT NULL');
+        
+        $this->db->where('reg_no IS NOT NULL');
         $this->db->where('gender', $gender);
-        $this->db->where('timestamp', idate('Y'));
+        $this->db->where('session', '2020-21');
+    //    echo $this->db->get_compiled_select('volunteer');
+        // exit;
         return $this->db->count_all_results('volunteer');
     }
 

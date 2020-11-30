@@ -147,9 +147,9 @@ class Dashboard extends Admin_Controller
         
             if($gender['gender'] == 'Male')                    //NO.
                {                                        //GENERATE 
-                   $regno = 1000;                       //BY
+                   $regno = 1001;                       //BY
                }elseif($gender['gender'] == 'Female'){            //  THIS    
-                   $regno = 2000;                       //CODE
+                   $regno = 2001;                       //CODE
                }                                        //VALUE IN 
 			   $regno +=$add_it;      
 			//    $add_it--;                  //REGNO.
@@ -157,7 +157,7 @@ class Dashboard extends Admin_Controller
            
         // }
 		$this->UsersData->approvedReviewForm($id, $regno);
-		$this->render_template('Admin/reviewList');
+		redirect(base_url('Dashboard/showReview'));
        
         
     }
