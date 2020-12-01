@@ -34,12 +34,13 @@ class UsersData extends CI_Model
     public function regNo($gender)
     {
         //"SELECT count(*) FROM `volunteer` WHERE `gender`= '$gender'";
-        // $sessionYear = idate('Y').'-'.idate('y')+1;
+        $year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $sessionNss = $year1."-".$year2;
+        
         $this->db->where('reg_no IS NOT NULL');
         $this->db->where('gender', $gender);
-        $this->db->where('session', '2020-21');
-    //    echo $this->db->get_compiled_select('volunteer'); 
-        // exit;
+        $this->db->where('session', $sessionNss);
         return $this->db->count_all_results('volunteer');
     }
 
@@ -70,11 +71,7 @@ class UsersData extends CI_Model
             
     }
 
-    // public function fetch_single_details($user_id)
-    // {
-    //     $this->db->where('reg_no', $user_id);
-    //     return $this->db->get('volunteer');
-    // }
+   
 
     public function fetchRegDate()
     {
@@ -83,12 +80,7 @@ class UsersData extends CI_Model
     }
     
 
-    	// This function will get the total no. of boys and girls
-	
-	// public function getBoysGirls(){
-	// 	return $this->db->get('registerVar')->result_array();
-
-    // }
+   
     
 
     public function getBoysReg(){

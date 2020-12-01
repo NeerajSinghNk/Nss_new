@@ -13,8 +13,8 @@
 
         
         <li id="manageUserSubNav"><a href="<?php echo base_url('Dashboard/list')?>" ><i class="ion ion-android-people"></i><span>Overall Responses</span></a></li>
-        <li id="createUserSubNav"><a href="<?php echo base_url('Dashboard/currentList')?>" ><i class="ion ion-android-people"></i><span>Current Responses</span></a></li>
-        <li id="createUserSubNav"><a href="<?php echo base_url('Dashboard/showReview')?>" ><i class="ion ion-android-people"></i><span>Under Review Application</span></a></li>
+        <li id="createUserSubNav"><a href="<?php echo base_url('Dashboard/currentList')?>" ><i class="ion ion-person-add"></i><span>Current Responses</span></a></li>
+        <li id="createUserSubNav"><a href="<?php echo base_url('Dashboard/showReview')?>" ><i class="fa fa-check"></i><span>Under Review Application</span></a></li>
         <li id="createUserSubNav"><a href="<?php echo base_url('Dashboard/summary')?>" ><i class="fa fa-pie-chart"></i><span>Graphical Summary</span></a></li>
         
        

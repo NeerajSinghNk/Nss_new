@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
   
 
@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script> -->
 <script>
 $(document).ready(function() {
     $('#mytable').DataTable( {
@@ -82,7 +82,7 @@ $(document).ready(function() {
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
                         <th>Gender</th>
-                        <th width="60">Session</th>
+                        <!-- <th width="60">Session</th> -->
                         
                   </thead>
                   <tbody id="myTable">
@@ -116,7 +116,7 @@ $(document).ready(function() {
                   <?php
                   //for passing row id to controller
                   // echo  anchor("Dashboard/updateCurrentResponse/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')
-                  echo $user['session']
+                  //echo $user['session']
                   ?>
                   
                  </td>
@@ -163,3 +163,42 @@ $(document).ready(function() {
   });
 </script>
 
+
+<!-- 
+    
+<script type="text/javascript">
+    $(".remove").click(function(){
+        // var id = $(this).parents("tr").attr("id");
+    
+       swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+          $.ajax({
+             url: "Dashboard/deleteCurrentResponse/{$user['sno']}",
+             type: 'DELETE',
+             error: function() {
+                alert('Something is wrong');
+             },
+             success: function(data) {
+                  $("#"+id).remove();
+                  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+             }
+          });
+        } else {
+          swal("Cancelled", "Your imaginary file is safe :)", "error");
+        }
+      });
+     
+    });
+    
+</script> -->

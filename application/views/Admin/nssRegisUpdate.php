@@ -51,7 +51,7 @@
           {
               $respo = $row['regisDate'];
           }
-          print_r($respo);
+          // print_r($respo);
         
       $regStatus = $this->UsersData->getStatus();
       $formStatus = implode("",$regStatus[0]);
@@ -117,7 +117,8 @@
 				<!-- <input type="hidden" id="dtp_input1" value="" /><br/> -->
             </div>
 			<div class="col-xs-2" >
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Update</button>
+                <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Update</button> -->
+                <button type="submit" class="btn btn-info pull-right">Update</button>
             </div>
         </fieldset>
     </form>

@@ -54,8 +54,12 @@ class AdminData extends CI_Model
 
 	public function currentResponse_total()
 	{
+		$year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $sessionNss = $year1."-".$year2;
+        
 		$q = $this->db->where('reg_no IS NOT NULL');
-		$q = $this->db->where('timestamp', idate('Y'));
+		$q = $this->db->where('session', $sessionNss);
 		return $q->count_all_results('volunteer');
 	}
 
@@ -116,9 +120,13 @@ class AdminData extends CI_Model
 	
 	public function currentResponses()
 	{
+		$year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $sessionNss = $year1."-".$year2;
+        
 		date_default_timezone_set('Asia/Calcutta');
 		$this->db->where('reg_no IS NOT NULL');
-		$this->db->where('timestamp', idate('Y'))->order_by('name', 'ASC');
+		$this->db->where('session', $sessionNss)->order_by('name', 'ASC');
 		$currentRes = $this->db->get('volunteer')->result_array();
 		return $currentRes;
 	}
