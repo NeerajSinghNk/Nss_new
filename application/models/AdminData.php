@@ -69,7 +69,8 @@ class AdminData extends CI_Model
 
 	public function all()
 	{
-		$this->db->order_by('name', 'ASC');
+		$this->db->where('reg_no IS NOT NULL');
+		$this->db->order_by('name', 'ASC'); 
 		$users = $this->db->get('volunteer')->result_array();
 		return $users;
 	}
@@ -129,6 +130,19 @@ class AdminData extends CI_Model
 		$review = $this->db->get('volunteer')->result_array();
 		// print_r($review);
 		return $review;
+	}
+
+	public function deleteReviewList($userID){
+		$sql_query=$this->db->where('sno', $userID)
+						->delete('volunteer');
+				   if($sql_query){
+		$this->session->set_flashdata('success', 'Record delete successfully');
+		redirect('Dashboard/showReview');
+			}
+			else{
+				$this->session->set_flashdata('failure', 'Somthing went worng. Error!!');
+				redirect('Dashboard/showReview');
+			}
 	}
 
 	

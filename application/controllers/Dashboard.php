@@ -137,12 +137,9 @@ class Dashboard extends Admin_Controller
 	 //Approved incomming form
 
 	 public function approvedReview($id){
-        // $regno = 0;
-        // $add_it = '';
+      
 		$gender = $this->UsersData->getGender($id);
-		// print_r($gender['gender']);
-		// print_r($gender[0]['gender']);   
-        // foreach($genders as $gender){
+		
             $add_it = $this->UsersData->regNo($gender['gender']); //REGISTRATION
         
             if($gender['gender'] == 'Male')                    //NO.
@@ -152,10 +149,8 @@ class Dashboard extends Admin_Controller
                    $regno = 2001;                       //CODE
                }                                        //VALUE IN 
 			   $regno +=$add_it;      
-			//    $add_it--;                  //REGNO.
-            // print_r($add_it);
+			                  //REGNO.
            
-        // }
 		$this->UsersData->approvedReviewForm($id, $regno);
 		redirect(base_url('Dashboard/showReview'));
        
@@ -164,8 +159,9 @@ class Dashboard extends Admin_Controller
 
 	//This function is used to review the application and generate application number
 
-	public function reviewApplication(){
-		
+	public function deleteReviewResponse($userID){
+		$this->AdminData->deleteReviewList($userID);
+		redirect(base_url('Dashboard/showReview'));
 	}
 
 }

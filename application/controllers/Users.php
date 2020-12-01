@@ -184,7 +184,7 @@ class Users extends MY_controller
             
             $this->UsersData->registerUser($formArray);
             // return redirect('/Users/generate_pdf');
-            $this->session->set_flashdata('success','Registration successful...');
+            $this->session->set_flashdata('success','Registration successful...<pre> Application will be approved under 7 working days...');
             return redirect('/Users/login');
         }  
     }
@@ -213,7 +213,7 @@ class Users extends MY_controller
            
        
         
-    // }
+    // } 
 
     public function loginForm()
     {

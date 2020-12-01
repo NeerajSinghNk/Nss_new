@@ -34,11 +34,11 @@ class UsersData extends CI_Model
     public function regNo($gender)
     {
         //"SELECT count(*) FROM `volunteer` WHERE `gender`= '$gender'";
-        
+        // $sessionYear = idate('Y').'-'.idate('y')+1;
         $this->db->where('reg_no IS NOT NULL');
         $this->db->where('gender', $gender);
         $this->db->where('session', '2020-21');
-    //    echo $this->db->get_compiled_select('volunteer');
+    //    echo $this->db->get_compiled_select('volunteer'); 
         // exit;
         return $this->db->count_all_results('volunteer');
     }
@@ -58,18 +58,16 @@ class UsersData extends CI_Model
     public function isvalidate($username, $password)
     {
         //SELECT email FROM volunteer WHERE email = '$username' and pass = '$password'
+        $this->db->where('reg_no IS NOT NULL');
         $q = $this->db->where(['email'=>$username,'pass'=>$password])
                 ->get('volunteer');
-
-            // // echo "<pre>";
-            //  //print_r($q);
-            // if($q -> num_rows())
-            // {
-                 return $q->row();
+            // if('reg_no' == null){
+            //     echo "In process";
+            // }else{
+                return $q->row();
             // }
-            // else{
-            //     return FALSE;
-            // }
+            
+            
     }
 
     // public function fetch_single_details($user_id)
@@ -128,7 +126,7 @@ class UsersData extends CI_Model
         $this->db->set('sno', $id);
         $this->db->where('sno', $id);
         $this->db->update('volunteer');
-
+        
         // $sql = "INSERT into volunteer('reg_no') values ($regno) where sno = $id";
 	}
 

@@ -69,6 +69,7 @@ $(document).ready(function() {
                   <thead>
                   <!-- <th>Timestamp</th> -->
                         <th>#</th>
+                        <th width="60">Action</th>
                         <th>Reg. No.</th>
                         <th>Name</th>
                         <th>Father's Name</th>
@@ -80,7 +81,7 @@ $(document).ready(function() {
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
                         <th>Gender</th>
-                        <th width="60">Action</th>
+                        
                         <!-- <th width="100">Delete</th> -->
                   </thead>
                   <tbody id="myTable">
@@ -93,6 +94,11 @@ $(document).ready(function() {
                       <tr>
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
+                        <td>
+                          <?php
+                          //for passing row id to controller
+                          echo  anchor("Dashboard/deleteList/{$user['sno']}",'Delete','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
+                        </td>
                         <td><?php echo $user['reg_no']?></td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['fathername']?></td>
@@ -104,11 +110,7 @@ $(document).ready(function() {
                         <!-- <td><?php echo $user['altno']?></td> -->
                         <td><?php echo $user['email']?></td>
                         <td><?php echo $user['gender']?></td>
-                      <td>
-                  <?php
-                  //for passing row id to controller
-                  echo  anchor("Dashboard/deleteList/{$user['sno']}",' ','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
-                  </td>
+                    
                   <!-- <td> -->
                   <?php
                   //for passing row id to controller

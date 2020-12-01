@@ -11,6 +11,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
 <script>
 $(document).ready(function() {
     $('#mytable').DataTable( {
@@ -21,7 +24,7 @@ $(document).ready(function() {
             'csvHtml5',
             'pdfHtml5'
         ]
-    } );
+    } )
 } );
 </script>
 <?php date_default_timezone_set('Asia/Calcutta');?>
@@ -70,7 +73,8 @@ $(document).ready(function() {
                   <!-- <th>Timestamp</th> -->
                         <!-- <th><input type = "checkbox" id="check" name="check"></th> -->
                         <th>#</th>
-                        <th>Reg. No.</th>
+                        <!-- <th>Reg. No.</th> -->
+                        <th width="100">Action</th>
                         <th>Name</th>
                         <th>Father's Name</th>
                         <th>Year</th>
@@ -82,7 +86,7 @@ $(document).ready(function() {
                         <th>Email Id</th>
                         <th>Gender</th>
                         <th width="60">Session</th>
-                        <th width="100">Review</th>
+                        
                   </thead>
                   <tbody id="myTable">
                   <?php
@@ -94,7 +98,12 @@ $(document).ready(function() {
                       <tr>
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
-                        <td><?php echo $user['reg_no']?></td>
+                        <td >
+                          <?php
+                          echo anchor("Dashboard/approvedReview/{$user['sno']}",'Approve','class="glyphicon glyphicon-check btn-success btn-xs"','id="approve"');
+                          echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
+                          ?>
+                        </td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['fathername']?></td>
                         <td><?php echo $user['class']?></td>
@@ -113,12 +122,7 @@ $(document).ready(function() {
                   ?>
                   
                  </td>
-                  <td>
-                  <?php
-                  //for passing row id to controller
-                  
-                  echo anchor("Dashboard/approvedReview/{$user['sno']}",' ','class="glyphicon glyphicon-check btn-success btn-xs"')?>
-                  </td>
+                 
                   </tr>
                   <?php
                   // for serial number increment
@@ -159,5 +163,24 @@ $(document).ready(function() {
     $("#createUserSubNav").addClass('active');
     
   });
-</script>
 
+
+  $(document).click(function(){
+  $("#approve").swal({
+    title: "Are you sure about approve this volunteer?",
+    type: "info",
+    showCancelButton: true,
+    confirmButtonText: "Approve",
+    confirmButtonColor: "#ff0055",
+    cancelButtonColor: "#999999",
+    reverseButtons: true,
+    focusConfirm: false,
+    focusCancel: true
+  });
+  });
+
+
+  document.querySelector("#approve").addEventListener("click", function() {
+  
+});
+</script>
