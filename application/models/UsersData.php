@@ -58,8 +58,12 @@ class UsersData extends CI_Model
 
     public function isvalidate($username, $password)
     {
+        $year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $sessionNss = $year1."-".$year2;
         //SELECT email FROM volunteer WHERE email = '$username' and pass = '$password'
         $this->db->where('reg_no IS NOT NULL');
+        $this->db->where('session', $sessionNss);
         $q = $this->db->where(['email'=>$username,'pass'=>$password])
                 ->get('volunteer');
             // if('reg_no' == null){
