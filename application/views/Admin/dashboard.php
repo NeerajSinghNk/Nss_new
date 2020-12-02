@@ -36,9 +36,9 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><?php echo $currentRespo ?></h3>
+                <h3><?php echo date("Y");?> - <?php echo $currentRespo ?></h3>
 
-                <p>Current Responses (<?php echo date("Y");?>)</p>
+                <p>Current Responses </p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -66,9 +66,9 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3><?php echo date("Y"); ?> - <?php echo idate('y')+1;?></h3>
-
-                <p>New Session Registration</p>
+                <h3><?php echo date("Y"); ?>-<?php echo idate('y')+1;?></h3>
+ 
+                <p>New Registration</p>
               </div>
               <div class="icon"> 
                 <i class="ion ion-android-calendar"></i>
@@ -82,9 +82,9 @@
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3><?php echo date("Y"); ?> - <?php echo idate('y')+1;?></h3>
+                <h3><?php echo date("Y"); ?>-<?php echo idate('y')+1;?></h3>
 
-                <p>Under Review Application</p>
+                <p>Review Application - <?php echo $reviewResponse_total?></p>
               </div>
               <div class="icon"> 
                 <i class="fa fa-check"></i>

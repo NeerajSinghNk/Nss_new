@@ -12,6 +12,7 @@ class Dashboard extends Admin_Controller
 	{	
 		$data['total_responses'] = $this->AdminData->total_responses();
 		$data['currentRespo'] = $this->AdminData->currentResponse_total();
+		$data['reviewResponse_total'] = $this->AdminData->reviewResponse_total();
 		$this->render_template('/Admin/dashboard', $data);
 	}
 

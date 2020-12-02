@@ -97,7 +97,7 @@ $(document).ready(function() {
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
                         <td>
-                        <button type="button" class="btn btn-danger">
+                        <button type="submit" class="btn btn-danger pull-right" style="padding:1px 1px; margin:1px 1px">
                           <?php
                           //for passing row id to controller
                            echo anchor("Dashboard/deleteCurrentResponse/{$user['sno']}",'Delete','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>

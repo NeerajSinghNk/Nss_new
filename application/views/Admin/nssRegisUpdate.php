@@ -118,7 +118,7 @@
             </div>
 			<div class="col-xs-2" >
                 <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Update</button> -->
-                <button type="submit" class="btn btn-info pull-right">Update</button>
+                <button type="submit" class="btn btn-info pull-left">Update</button>
             </div>
         </fieldset>
     </form>

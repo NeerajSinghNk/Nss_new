@@ -63,6 +63,19 @@ class AdminData extends CI_Model
 		return $q->count_all_results('volunteer');
 	}
 
+	// Review Responses
+	public function reviewResponse_total()
+	{
+		$year1 = idate('Y');
+        $year2 = idate('y')+1;
+        $sessionNss = $year1."-".$year2;
+        
+		$q = $this->db->where('reg_no IS NULL');
+		$q = $this->db->where('session', $sessionNss);
+		return $q->count_all_results('volunteer');
+	}
+
+
 	//Use for pagination in list page
 	public function fetch_list($limit, $start) {
         $this->db->limit($limit, $start);

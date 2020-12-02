@@ -95,10 +95,12 @@ $(document).ready(function() {
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
                         <td>
+                        <button type="submit" class="btn btn-danger pull-rigth" style="padding:1px 1px; margin:1px 1px">
                           <?php
                           //for passing row id to controller
                           echo  anchor("Dashboard/deleteList/{$user['sno']}",'Delete','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
-                        </td>
+                        </button>  
+                      </td>
                         <td><?php echo $user['reg_no']?></td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['fathername']?></td>

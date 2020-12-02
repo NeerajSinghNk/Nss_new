@@ -99,10 +99,17 @@ $(document).ready(function() {
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
                         <td >
+                        <button type="submit" class="btn btn-success pull-center" style="padding:1px 1px; margin:1px 1px">
                           <?php
-                          echo anchor("Dashboard/approvedReview/{$user['sno']}",'Approve','class="glyphicon glyphicon-check btn-success btn-xs"','id="approve"');
-                          echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
+                          echo anchor("Dashboard/approvedReview/{$user['sno']}",'Accept','class="glyphicon glyphicon-check btn-success btn-xs"','id="approve"');
                           ?>
+                        </button><br>
+                        <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
+                          <?php 
+                          echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
+                          
+                          ?>
+                          </button>
                         </td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['fathername']?></td>
