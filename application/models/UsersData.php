@@ -9,121 +9,122 @@ class UsersData extends CI_Model
        $year2 = idate('y')+1;
        $this->db->where('session',$year1."-".$year2);
        return $this->db->count_all_results('volunteer');
-    }
+   }
 
-    public function maleRecord()
-    {
+   public function maleRecord()
+   {
         //SELECT count(*) FROM `volunteer` WHERE gender ='Male'
-        $year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $this->db->where('session',$year1."-".$year2);
-        $this->db->where('gender','Male');
-        return $this->db->count_all_results('volunteer');
-    }
+    $year1 = idate('Y');
+    $year2 = idate('y')+1;
+    $this->db->where('session',$year1."-".$year2);
+    $this->db->where('gender','Male');
+    return $this->db->count_all_results('volunteer');
+}
 
-    public function femaleRecord()
-    {
+public function femaleRecord()
+{
         //SELECT count(*) FROM `volunteer` WHERE gender ='female'
-        $year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $this->db->where('session',$year1."-".$year2);
-        $this->db->where('gender','Female');
-        return $this->db->count_all_results('volunteer');
-    }
+    $year1 = idate('Y');
+    $year2 = idate('y')+1;
+    $this->db->where('session',$year1."-".$year2);
+    $this->db->where('gender','Female');
+    return $this->db->count_all_results('volunteer');
+}
 
-    public function regNo($gender)
-    {
+public function regNo($gender)
+{
         //"SELECT count(*) FROM `volunteer` WHERE `gender`= '$gender'";
-        $year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $sessionNss = $year1."-".$year2;
-        
-        $this->db->where('reg_no IS NOT NULL');
-        $this->db->where('gender', $gender);
-        $this->db->where('session', $sessionNss);
-        return $this->db->count_all_results('volunteer');
-    }
+    $year1 = idate('Y');
+    $year2 = idate('y')+1;
+    $sessionNss = $year1."-".$year2;
 
-    public function fetchMail($email)
-    {
+    $this->db->where('reg_no IS NOT NULL');
+    $this->db->where('gender', $gender);
+    $this->db->where('session', $sessionNss);
+    return $this->db->count_all_results('volunteer');
+}
+
+public function fetchMail($email)
+{
         //Select * from `volunteer` where `email` = '$email';
-        $this->db->where('email', $email);
-        return $this->db->count_all_results('volunteer');
-    }
+    $this->db->where('email', $email);
+    return $this->db->count_all_results('volunteer');
+}
 
-    public function registerUser($formArray)
-    {
-        $this->db->insert('volunteer', $formArray);
-    }
+public function registerUser($formArray)
+{
+    $this->db->insert('volunteer', $formArray);
+}
 
-    public function isvalidate($username, $password)
-    {
-        $year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $sessionNss = $year1."-".$year2;
+public function isvalidate($username, $password)
+{
+    $year1 = idate('Y');
+    $year2 = idate('y')+1;
+    $sessionNss = $year1."-".$year2;
+    //Jan 2021 session 2021-22 2020-21, July 2020 July 2021
         //SELECT email FROM volunteer WHERE email = '$username' and pass = '$password'
-        $this->db->where('reg_no IS NOT NULL');
-        $this->db->where('session', $sessionNss);
-        $q = $this->db->where(['email'=>$username,'pass'=>$password])
-                ->get('volunteer');
+    $this->db->where('reg_no');
+    $this->db->where('session', $sessionNss);
+    $q = $this->db->where(['email'=>$username,'pass'=>$password])
+    ->get('volunteer');
             // if('reg_no' == null){
             //     echo "In process";
             // }else{
-                return $q->row();
+    return $q->row();
             // }
-            
-            
-    }
 
-   
 
-    public function fetchRegDate()
-    {
-        $users = $this->db->get('registerVar')->result_array();
-		return $users;
-    }
-    
+}
 
-   
-    
 
-    public function getBoysReg(){
-        return $this->db->select('boys')->where('id', 1)->get('registerVar')->result_array();
-    }
 
-    public function getGirlsReg(){
-        return $this->db->select('girls')->where('id', 1)->get('registerVar')->result_array();
-    }
+public function fetchRegDate()
+{
+    $users = $this->db->get('registerVar')->result_array();
+    return $users;
+}
 
-    public function getRegDate(){
-        return $this->db->select('regisDate')->where('id', 1)->get('registerVar')->result_array();
-    }
 
-    public function getStatus(){
-        return $this->db->select('status')->where('id', 1)->get('registerVar')->result_array();
-    }
 
-    public function getSumBoysGirls(){
-        $this->db->select('SUM(boys) + SUM(girls) as total', FALSE)->get('registerVar')->result_array();
-    }
 
-    public function getGender($id){
-        $res = $this->db->select('gender')->where('sno', $id)->get('volunteer')->row_array();
+
+public function getBoysReg(){
+    return $this->db->select('boys')->where('id', 1)->get('registerVar')->result_array();
+}
+
+public function getGirlsReg(){
+    return $this->db->select('girls')->where('id', 1)->get('registerVar')->result_array();
+}
+
+public function getRegDate(){
+    return $this->db->select('regisDate')->where('id', 1)->get('registerVar')->result_array();
+}
+
+public function getStatus(){
+    return $this->db->select('status')->where('id', 1)->get('registerVar')->result_array();
+}
+
+public function getSumBoysGirls(){
+    $this->db->select('SUM(boys) + SUM(girls) as total', FALSE)->get('registerVar')->result_array();
+}
+
+public function getGender($id){
+    $res = $this->db->select('gender')->where('sno', $id)->get('volunteer')->row_array();
         // print_r($res);
-        return $res;
-    }
+    return $res;
+}
 
     //Approved review application
 
-	public function approvedReviewForm($id, $regno){
-       
-        
-        $this->db->set('reg_no', $regno);
-        $this->db->set('sno', $id);
-        $this->db->where('sno', $id);
-        $this->db->update('volunteer');
-        
+public function approvedReviewForm($id, $regno){
+
+
+    $this->db->set('reg_no', $regno);
+    $this->db->set('sno', $id);
+    $this->db->where('sno', $id);
+    $this->db->update('volunteer');
+
         // $sql = "INSERT into volunteer('reg_no') values ($regno) where sno = $id";
-	}
+}
 
 }
