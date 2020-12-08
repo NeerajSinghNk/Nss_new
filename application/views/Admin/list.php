@@ -72,6 +72,7 @@ $(document).ready(function() {
                         <th width="60">Action</th>
                         <th>Reg. No.</th>
                         <th>Name</th>
+                        <th>Gender</th>
                         <th>Father's Name</th>
                         <th>Year</th>
                         <th>Branch</th>
@@ -80,7 +81,8 @@ $(document).ready(function() {
                         <th>Whatsapp No.</th>
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
-                        <th>Gender</th>
+                        <th>Session</th>
+                        
                         
                         <!-- <th width="100">Delete</th> -->
                   </thead>
@@ -95,7 +97,7 @@ $(document).ready(function() {
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
                         <td>
-                        <button type="submit" class="btn btn-danger pull-rigth" style="padding:1px 1px; margin:1px 1px">
+                        <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
                           <?php
                           //for passing row id to controller
                           echo  anchor("Dashboard/deleteList/{$user['sno']}",'Delete','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
@@ -103,6 +105,7 @@ $(document).ready(function() {
                       </td>
                         <td><?php echo $user['reg_no']?></td>
                         <td><?php echo $user['name']?></td>
+                        <td><?php echo $user['gender']?></td>
                         <td><?php echo $user['fathername']?></td>
                         <td><?php echo $user['class']?></td>
                         <td><?php echo $user['branch']?></td>
@@ -111,7 +114,8 @@ $(document).ready(function() {
                         <td><?php echo $user['whatsappno']?></td>
                         <!-- <td><?php echo $user['altno']?></td> -->
                         <td><?php echo $user['email']?></td>
-                        <td><?php echo $user['gender']?></td>
+                        <td><?php echo $user['session']?></td>
+                       
                     
                   <!-- <td> -->
                   <?php

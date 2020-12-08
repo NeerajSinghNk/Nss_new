@@ -115,9 +115,10 @@ class Dashboard extends Admin_Controller
 		$boys = $this->input->post('boys');
 		$girls = $this->input->post('girls');
 		$status =  $this->input->post('r3');
+		$sessionYear = $this->input->post('sessionYear');
 		if($dateTime)
 		{
-			$this->AdminData->registerVar($dateTime,$boys,$girls,$status);
+			$this->AdminData->registerVar($dateTime,$boys,$girls,$status,$sessionYear);
 			$this->session->set_flashdata('success','Registration Data Successfully updated...');
 			
 		}

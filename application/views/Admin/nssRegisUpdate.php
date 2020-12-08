@@ -1,7 +1,11 @@
 <!-- <link rel="stylesheet" href="<?php echo base_url('assets/css/nssUpdateRegis.css') ?>"> -->
     <!-- <link href="<?= base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet" media="screen"> -->
     
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css"> -->
     
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
     <!-- daterange picker -->
   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css">
    <!-- iCheck for checkboxes and radio inputs -->
@@ -45,6 +49,8 @@
     <?php
       $boys = $this->UsersData->getBoysReg();
       $girls = $this->UsersData->getGirlsReg();
+      $sessionNss = $this->UsersData->getSessionYear();
+      // print_r();
       $resDate = $this->UsersData->fetchRegDate();
           $respo = '';
           foreach($resDate as $row)
@@ -90,6 +96,19 @@
                   <!-- /.input group -->
             </div>
 
+            <div class="form-group">
+            <label for="dtp_input1" class="col-md-2 control-label">Session Year</label>
+
+                  <div class="input-group  date form_data col-md-5">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    
+                    <input type="text" class="form-control" name="sessionYear" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy" data-mask="" im-insert="false" value="<?php echo $sessionNss[0]['sessionYear']?>">   </div>
+                  <!-- /.input group -->
+            </div>
+
+           
             <label for="dtp_input1" class="col-md-2 control-label">Status</label>
             <div class="input-group date form_data col-md-5">
             <!-- <div class="col-sm-6"> -->
@@ -114,6 +133,12 @@
                   <!-- </div> -->
                    </div>
 
+
+                 
+                   
+                    <!-- <div >
+                    <input type="checkbox" checked data-toggle="toggle" data-on="Active" data-off="InActive" data-onstyle="success" data-offstyle="danger">  </div> -->
+                
 				<!-- <input type="hidden" id="dtp_input1" value="" /><br/> -->
             </div>
 			<div class="col-xs-2" >
@@ -148,12 +173,39 @@
         format: 'MM/DD/YYYY hh:mm A'
       }
     })
+
+
+
+     //Datemask dd/mm/yyyy
+     $('#sessionYear').inputmask('yyyy', { 'placeholder': 'yyyy' })
   </script>
+
+<!-- On / Off status -->
+  <!-- <script>
+    $('.toggle-class').change(function() {
+      var status  = $(this).prop('checked') == true ? 1 : 0; 
+      var user_id = $(this).data('id'); 
+      var baseUrl = "{{url('')}}";
+      
+      $.ajax({
+          url     : baseUrl+ '/admin/user/changestatus/' +user_id,
+          type    : "GET",
+          dataType: "json",
+          data    : {'status': status, 'user_id': user_id},
+          success : function(result){
+            Toast.fire({
+              type  : result.type,
+              title : result.message
+            });
+         }
+      })
+  });
+  </script> -->
 
 
 <script type="text/javascript" src="<?= base_url('assets/js/jquery-1.8.3.min.js')?>" charset="UTF-8"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/bootstrap.min.js')?>"></script>
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 
 <script src="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.js"></script>
 

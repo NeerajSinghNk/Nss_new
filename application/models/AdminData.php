@@ -54,24 +54,27 @@ class AdminData extends CI_Model
 
 	public function currentResponse_total()
 	{
-		$year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $sessionNss = $year1."-".$year2;
+		// $year1 = idate('Y');
+        // $year2 = idate('y')+1;
+		// $sessionNss = $year1."-".$year2;
+		$sessionNss = $this->UsersData->getSessionYear();
+        
         
 		$q = $this->db->where('reg_no IS NOT NULL');
-		$q = $this->db->where('session', $sessionNss);
+		$q = $this->db->where('session', $sessionNss[0]['sessionYear']);
 		return $q->count_all_results('volunteer');
 	}
 
 	// Review Responses
 	public function reviewResponse_total()
 	{
-		$year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $sessionNss = $year1."-".$year2;
+		// $year1 = idate('Y');
+        // $year2 = idate('y')+1;
+		// $sessionNss = $year1."-".$year2;
+		$sessionNss = $this->UsersData->getSessionYear();
         
 		$q = $this->db->where('reg_no IS NULL');
-		$q = $this->db->where('session', $sessionNss);
+		$q = $this->db->where('session', $sessionNss[0]['sessionYear']);
 		return $q->count_all_results('volunteer');
 	}
 
@@ -133,13 +136,15 @@ class AdminData extends CI_Model
 	
 	public function currentResponses()
 	{
-		$year1 = idate('Y');
-        $year2 = idate('y')+1;
-        $sessionNss = $year1."-".$year2;
+		// $year1 = idate('Y');
+        // $year2 = idate('y')+1;
+        // $sessionNss = $year1."-".$year2;
+		$sessionNss = $this->UsersData->getSessionYear();
         
+		
 		date_default_timezone_set('Asia/Calcutta');
 		$this->db->where('reg_no IS NOT NULL');
-		$this->db->where('session', $sessionNss)->order_by('name', 'ASC');
+		$this->db->where('session', $sessionNss[0]['sessionYear'])->order_by('name', 'ASC');
 		$currentRes = $this->db->get('volunteer')->result_array();
 		return $currentRes;
 	}
@@ -235,12 +240,13 @@ class AdminData extends CI_Model
 	}
 
 	//Insert a registration date in RegisterVar table
-	public function registerVar($dateTime,$boys,$girls,$status)
+	public function registerVar($dateTime,$boys,$girls,$status,$sessionYear)
 	{
 		$this->db->set('regisDate', $dateTime);
 		$this->db->set('boys', $boys);
 		$this->db->set('girls', $girls);
 		$this->db->set('status', $status);
+		$this->db->set('sessionYear', $sessionYear);
 		$this->db->where('id', 1);
 		$this->db->update('registerVar'); // gives UPDATE `mytable` SET `registerDate` = 'dateTime' WHERE `id` = 1
 		
