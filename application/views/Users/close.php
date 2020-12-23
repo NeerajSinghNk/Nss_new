@@ -23,8 +23,7 @@
 		<div  align="center" style="font-weight: 600;font-family:sans-serif;">
 			<h1>NSS Volunteer Registration <?php idate('Y')?> - <?php idate('y')+1?> has been Closed.
 			</h1><br>
-			<h3>In Case of any query please contact<br> Prof. Tapesh Sarsodia <br> +91 9977036581
-			</h3>
+			<h3>In Case of any query please contact<br> Prof. Shailendra Singh Khinchi  <br> +91- 9425956306
 		</div>
 		<div align="center">
 			<a href="<?= base_url('Users/login')?>"><button class="btn btn-primary">Login</button></a>

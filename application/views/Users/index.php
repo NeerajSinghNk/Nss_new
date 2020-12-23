@@ -57,12 +57,16 @@
 			<div class="h3" style="font-family:serif;">
 				National Service Scheme
 			</div>
+			<div class="h4" style="font-family:serif;">
+				Institute Of Engineering & Technology, DAVV Indore, M.P
+			</div>
+
 		</div>
 
 		<div class="card">
 			
 			<div align="right" class="h5">Total Registration  till now : <?php echo $this->UsersData->allRecord();?></div>
-			<div class="btn-danger font-italic" > <b>NOTICE :</b> We have increased number of registration for Boys from <?php echo $TotalBoy?> to <?php echo $TotalGirl?> after that registration for Boys will be closed.</div>
+			<!-- <div class="btn-danger font-italic" > <b>NOTICE :</b> We have increased number of registration for Boys from <?php //echo $TotalBoy?> to <?php //echo $TotalGirl?> after that registration for Boys will be closed.</div> -->
 			<span class="small" align="right">updated at <?php echo date("d/m/Y h:i:s A",time())?></span>
 			<div class="h3 text-uppercase" align="center" style="font-family: sans-serif;">Instructions for NSS Registration</div>
 			<div class="content">
@@ -93,7 +97,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		In case of any problem/query please contact<br> Mr. Tapesh Sarsodia (+91 9977036581)
+		In case of any problem/query please contact<br> Prof. Shailendra Singh Khinchi (+91 9425956306)
 	</div>
 </body>
 </html>
