@@ -86,13 +86,13 @@ class Users extends MY_controller
         $d = new DateTime( date('Y-m-d H:i:s.'.$micro, $t) );
         
         $sessionNss = $this->UsersData->getSessionYear();
-
+ 
         $email = $this->input->post('email');
         $existMail = $this->UsersData->fetchMail($email);
             //print_r($existMail);
-        if($existMail == 1)
+        if($existMail >= 1)
         {
-        $this->session->set_flashdata('matchFound', 'Your email is already registered...');
+        $this->session->set_flashdata('matchFound', 'matchFound');
         return redirect('/Users/login');
         }
         else
@@ -167,13 +167,19 @@ class Users extends MY_controller
             // has reistration number -> login and generate pdf
             // registration is null -> pending for approval
             // registrtaion is negative -> application rejected
-            if($loginUser)
+            // print_r($loginUser);
+            // exit;
+            if($loginUser->reg_no != NULL)
             {
                 $this->session->set_userdata('loginUser',$loginUser);
                 return redirect('/Users/generate_pdf');
             }
-            else{
-            $this->session->set_flashdata('error_msg','Email Id or Password is invalid');
+            else if($loginUser->reg_no == NULL){
+                $this->session->set_flashdata('not_approve','notApproved');
+                return redirect('/Users/login');
+            }
+            else {
+            $this->session->set_flashdata('error_msg','error_msg');
             return redirect('/Users/login');
         }
     }

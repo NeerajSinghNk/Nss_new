@@ -72,7 +72,7 @@ $(document).ready(function() {
                   <thead>
                   <!-- <th>Timestamp</th> -->
                         <th>#</th>
-                        <th width="60">Action</th>
+                        <!-- <th width="60">Action</th> -->
                         <th>Reg. No.</th>
                         <th>Name</th>
                         <th>Gender</th>
@@ -99,13 +99,7 @@ $(document).ready(function() {
                       <tr>
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
-                        <td>
-                        <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px" onclick="archiveFunction()">
-                          <?php
-                          //for passing row id to controller
-                          echo  anchor("Dashboard/deleteList/{$user['sno']}",'Delete','class="glyphicon glyphicon-trash btn-danger btn-xs"')?>
-                        </button>  
-                      </td>
+                       
                         <td><?php echo $user['reg_no']?></td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['gender']?></td>

@@ -54,8 +54,12 @@ public function regNo($gender)
 
 public function fetchMail($email)
 {
+    $sessionNss = $this->UsersData->getSessionYear();
+
+    $sessionNss = $sessionNss[0]['sessionYear'];
         //Select * from `volunteer` where `email` = '$email';
-    $this->db->where('email', $email);
+    $this->db->where('email', $email );
+    $this->db->where('session', $sessionNss);
     return $this->db->count_all_results('volunteer');
 }
 
@@ -73,7 +77,7 @@ public function isvalidate($username, $password)
     $sessionNss = $sessionNss[0]['sessionYear'];
     //Jan 2021 session 2021-22 2020-21, July 2020 July 2021
         //SELECT email FROM volunteer WHERE email = '$username' and pass = '$password'
-    $this->db->where('reg_no');
+    // $this->db->where('reg_no');
     $this->db->where('session', $sessionNss);
     $q = $this->db->where(['email'=>$username,'pass'=>$password])
             ->get('volunteer');

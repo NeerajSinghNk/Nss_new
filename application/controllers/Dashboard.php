@@ -86,7 +86,7 @@ class Dashboard extends Admin_Controller
 
 	}
 
-
+ 
 
 	//Summary Application function //Google$summaryRec chart function
 

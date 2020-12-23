@@ -37,23 +37,8 @@
 			<div style="text-align: right">
 				<a href="<?= base_url('Users/index');?>" >New Registration</a>
 			</div>
-			<div style = "font-size:14px; color:#cc0000; margin-top:10px; text-align:center;">
-				<?php 
-				if ($this->session->flashdata('matchFound') != '') 
-					{ ?>
-						<div class="success-message" style="margin-bottom: 20px;font-size: 20px;color: red;"><?php echo $this->session->flashdata('matchFound'); ?></div>
-					<?php }?>
-				</div>
-				<div>
-					<?php
-					if($this->session->flashdata('error_msg') != ''){
-							//echo '<script>toastr.warning("'.$this->session->flashdata('notice').'","Notice");</script>';
-						?>
-						<div class="success-message" style="margin-bottom: 20px;font-size: 20px;color: red;"><?php echo $this->session->flashdata('error_msg'); ?></div>
-
-					<?php } ?>
-
-				</div>
+			
+				
 			</form>
 		</body>
 	<!--// Once user Registers
@@ -72,5 +57,42 @@
 			<?php 
 		}
 		?>
+
+		<?php 
+			if ($this->session->flashdata('not_approve') == 'notApproved') 
+				{ ?>
+					Swal.fire({
+					icon: 'info',
+					title: 'Application Status',
+					text: 'Your Application Is Not Approved Yet...',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+		<?php }?>
+
+		<?php
+			if($this->session->flashdata('error_msg') == 'error_msg'){
+			?>
+				Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Email Id or Password is invalid',
+				footer: '<a href>Why do I have this issue?</a>'
+				})		
+
+		<?php } ?>
+
+		<?php
+			if($this->session->flashdata('error_msg') == 'matchFound'){
+			?>
+				Swal.fire({
+				icon: 'info',
+				title: 'Match Found',
+				text: 'Your email is already registered...',
+				footer: '<a href>Why do I have this issue?</a>'
+				})		
+
+		<?php } ?>
+
+		
 	</script>
 	</html>

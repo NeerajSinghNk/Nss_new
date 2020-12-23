@@ -17,26 +17,13 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-              <div class="inner"> 
-                <h3><?php echo $total_responses ?></h3>
-
-                <p>Overall Responses</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-android-people"></i>
-              </div>
-              <a href="<?php echo base_url('Dashboard/list') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+        
           <!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><?php echo date("Y");?> - <?php echo $currentRespo ?></h3>
+                <h3><?php //echo date("Y");?>  <?php echo $currentRespo ?></h3>
 
                 <p>Current Responses </p>
               </div>
@@ -49,9 +36,9 @@
           <!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-orange">
               <div class="inner">
-                <h3><?php echo date("Y"); ?></h3>
+                <h3><?php echo date("Y"); ?>-<?php echo idate('y')+1;?></h3>
 
                 <p>Graphical Summary</p>
               </div>
@@ -64,14 +51,14 @@
           <!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-blue">
               <div class="inner">
                 <h3><?php echo date("Y"); ?>-<?php echo idate('y')+1;?></h3>
  
-                <p>New Registration</p>
+                <p>Registration Control</p>
               </div>
               <div class="icon"> 
-                <i class="ion ion-android-calendar"></i>
+              <i class="fa fa-cog"></i>
               </div>
               <a href="<?php echo base_url('Dashboard/nssRegisUpdate')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -84,7 +71,7 @@
               <div class="inner">
                 <h3><?php echo date("Y"); ?>-<?php echo idate('y')+1;?></h3>
 
-                <p>Review Application - <?php echo $reviewResponse_total?></p>
+                <p>Review Application : <?php echo $reviewResponse_total?></p>
               </div>
               <div class="icon"> 
                 <i class="fa fa-check"></i>
@@ -93,6 +80,21 @@
             </div>
           </div>
            <!-- ./col -->
+
+           <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+              <div class="inner"> 
+                <h3><?php echo $total_responses ?></h3>
+
+                <p>All Volunteers Data</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-android-people"></i>
+              </div>
+              <a href="<?php echo base_url('Dashboard/list') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
         </div>
         <!-- /.row -->
     </section>

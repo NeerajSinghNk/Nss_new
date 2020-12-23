@@ -177,12 +177,18 @@ class AdminData extends CI_Model
 
 	public function getTotalmale()
 	{
-		return $this->db->where('gender', 'Male')->count_all_results('volunteer');
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+	    $this->db->where('gender', 'Male');
+		return $this->db->where('session', $sessionNss)->count_all_results('volunteer');
 	}
 
 	public function getTotalfemale()
 	{
-		return $this->db->where('gender', 'Female')->count_all_results('volunteer');
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$this->db->where('gender', 'Female');
+		return $this->db->where('session', $sessionNss)->count_all_results('volunteer');
 		
 	}
 
@@ -193,22 +199,34 @@ class AdminData extends CI_Model
 
 	public function year1()
 	{
-		return $this->db->where("class", "1st")->count_all_results('volunteer');
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$this->db->where("class", "1st");
+		return $this->db->where('session', $sessionNss)->count_all_results('volunteer');
 	}
 
 	public function year2()
 	{
-		return $this->db->where("class", "2nd")->count_all_results('volunteer');
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$this->db->where("class", "2nd");
+		return $this->db->where('session', $sessionNss)->count_all_results('volunteer');
 	}
 
 	public function year3()
 	{
-		return $this->db->where("class", "3rd")->count_all_results('volunteer');
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$this->db->where("class", "3rd");
+		return $this->db->where('session', $sessionNss)->count_all_results('volunteer');
 	}
 
 	public function year4()
 	{
-		return $this->db->where("class", "4th")->count_all_results('volunteer');
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$this->db->where("class", "4th");
+		return $this->db->where('session', $sessionNss)->count_all_results('volunteer');
 	}
 
 	
@@ -216,7 +234,9 @@ class AdminData extends CI_Model
 
 	public function category()
 	{
-		$sql="SELECT category, count(*) FROM `volunteer` GROUP BY category";
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$sql="SELECT category, count(*) FROM `volunteer` where session = '$sessionNss' GROUP BY category";
 		$query = $this->db->query($sql);
 		$result = $query->result_array();         // Returns the result as an array
 		return $result;
@@ -225,7 +245,9 @@ class AdminData extends CI_Model
 
 	public function nssYear()
 	{
-		$sql="SELECT nssYear, count(*) FROM `volunteer` GROUP BY nssYear";
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$sql="SELECT nssYear, count(*) FROM `volunteer` where session = '$sessionNss' GROUP BY nssYear";
 		$query = $this->db->query($sql);
 		$result = $query->result_array();         // Returns the result as an array
 		return $result;
@@ -233,7 +255,9 @@ class AdminData extends CI_Model
 
 	public function branch()
 	{
-		$sql="SELECT branch, count(*) FROM `volunteer` GROUP BY branch";
+		$sessionNss = $this->UsersData->getSessionYear();
+    	$sessionNss = $sessionNss[0]['sessionYear'];
+		$sql="SELECT branch, count(*) FROM `volunteer` where session = '$sessionNss' GROUP BY branch";
 		$query = $this->db->query($sql);
 		$result = $query->result_array();         // Returns the result as an array
 		return $result;
