@@ -10,7 +10,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script> -->
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
 <script>
 $(document).ready(function() {
     $('#mytable').DataTable( {
@@ -21,7 +24,7 @@ $(document).ready(function() {
             'csvHtml5',
             'pdfHtml5'
         ]
-    } );
+    } )
 } );
 </script>
 <?php date_default_timezone_set('Asia/Calcutta');?>
@@ -68,7 +71,7 @@ $(document).ready(function() {
                 <table id="mytable" class="display" style="width:100%">
                   <thead>
                   <!-- <th>Timestamp</th> -->
-                       
+                        <!-- <th><input type = "checkbox" id="check" name="check"></th> -->
                         <th>#</th>
                         <th width="100">Action</th>
                         <th>Reg. No.</th>
@@ -79,10 +82,11 @@ $(document).ready(function() {
                         <th>Category</th>
                         <th>Blood group</th>
                         <th>Whatsapp No.</th>
-                        <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
                         <th>Gender</th>
-                        <!-- <th width="60">Session</th> -->
+                        <th>Activities</th>
+                        
+                       
                         
                   </thead>
                   <tbody id="myTable">
@@ -93,10 +97,9 @@ $(document).ready(function() {
                   {
                   ?>
                       <tr>
-                        <!-- <td><input type = "checkbox" id="check" name="check"></td> -->
                       <!-- <td><?php echo $user['timestamp']?></td> -->
                         <td><?php echo htmlentities($cnt);?></td>
-                        <td>
+                        <td >
                         <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
                           <?php
                           //for passing row id to controller
@@ -111,14 +114,13 @@ $(document).ready(function() {
                         <td><?php echo $user['category']?></td>
                         <td><?php echo $user['bloodgrp']?></td>
                         <td><?php echo $user['whatsappno']?></td>
-                        <!-- <td><?php echo $user['altno']?></td> -->
                         <td><?php echo $user['email']?></td>
+                       
                         <td><?php echo $user['gender']?></td>
+                        <!-- <td><?php //echo $user['interest']?></td> -->
                       <td>
                   <?php
-                  //for passing row id to controller
-                  // echo  anchor("Dashboard/updateCurrentResponse/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')
-                  //echo $user['session']
+                  
                   ?>
                   
                  </td>
@@ -163,44 +165,24 @@ $(document).ready(function() {
     $("#createUserSubNav").addClass('active');
     
   });
+
+
+  $(document).click(function(){
+  $("#approve").swal({
+    title: "Are you sure about approve this volunteer?",
+    type: "info",
+    showCancelButton: true,
+    confirmButtonText: "Approve",
+    confirmButtonColor: "#ff0055",
+    cancelButtonColor: "#999999",
+    reverseButtons: true,
+    focusConfirm: false,
+    focusCancel: true
+  });
+  });
+
+
+  document.querySelector("#approve").addEventListener("click", function() {
+  
+});
 </script>
-
-
-<!-- 
-    
-<script type="text/javascript">
-    $(".remove").click(function(){
-        // var id = $(this).parents("tr").attr("id");
-    
-       swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel plx!",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      },
-      function(isConfirm) {
-        if (isConfirm) {
-          $.ajax({
-             url: "Dashboard/deleteCurrentResponse/{$user['sno']}",
-             type: 'DELETE',
-             error: function() {
-                alert('Something is wrong');
-             },
-             success: function(data) {
-                  $("#"+id).remove();
-                  swal("Deleted!", "Your imaginary file has been deleted.", "success");
-             }
-          });
-        } else {
-          swal("Cancelled", "Your imaginary file is safe :)", "error");
-        }
-      });
-     
-    });
-    
-</script> -->
