@@ -427,22 +427,22 @@
 				<label for="example-text-input" class="col-md-5 col-form-label">Check the activities you are intersted in </label>
 				<div class="col-md-7 col-form-label">
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck1" value="content_writing">
-						<label class="custom-control-label" for="customCheck1">Content Writing</label>
+						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck1" value="Literacy">
+						<label class="custom-control-label" for="customCheck1">Literacy</label>
 					</div>
 
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck2" value="photography">
-						<label class="custom-control-label" for="customCheck2">Photography / Video Editing</label>
+						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck2" value="Cultural">
+						<label class="custom-control-label" for="customCheck2">Cultural</label>
 					</div>
 
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck3" value="painting">
-						<label class="custom-control-label" for="customCheck3">Painting / Poster Making</label>
+						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck3" value="Technical">
+						<label class="custom-control-label" for="customCheck3">Technical</label>
 					</div>
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck4" value="web">
-						<label class="custom-control-label" for="customCheck4"> Web Development & Data Handling</label>
+						<input type="checkbox" class="custom-control-input" name="interest[]" id="customCheck4" value="Sports">
+						<label class="custom-control-label" for="customCheck4"> Sports</label>
 					</div>
 				</div>
 			</div>

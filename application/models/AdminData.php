@@ -7,7 +7,7 @@ class AdminData extends CI_Model
 		parent::__construct();
 	}
 
-	/* 
+	/*  
 		This function checks if the email exists in the database
 	*/
 	public function check_email($email) 

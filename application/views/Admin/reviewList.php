@@ -106,7 +106,7 @@ $(document).ready(function() {
                         </button><br>
                         <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
                           <?php 
-                          echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
+                          echo anchor("Dashboard/rejectReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
                           
                           ?>
                           </button>

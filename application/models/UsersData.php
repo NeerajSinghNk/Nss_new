@@ -147,4 +147,9 @@ public function approvedReviewForm($id, $regno){
         // $sql = "INSERT into volunteer('reg_no') values ($regno) where sno = $id";
 }
 
+public function rejectReviewForm($id, $regno){
+    
+}
+
+
 }
