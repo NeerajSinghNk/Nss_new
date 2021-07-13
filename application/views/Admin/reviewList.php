@@ -84,6 +84,7 @@ $(document).ready(function() {
                         <th>Whatsapp No.</th>
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
+                        <th>Activities</th>
                         <th>Gender</th>
                         <th width="60">Session</th>
                         
@@ -106,7 +107,7 @@ $(document).ready(function() {
                         </button><br>
                         <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
                           <?php 
-                          echo anchor("Dashboard/rejectReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
+                          echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
                           
                           ?>
                           </button>
@@ -120,6 +121,7 @@ $(document).ready(function() {
                         <td><?php echo $user['whatsappno']?></td>
                         <!-- <td><?php echo $user['altno']?></td> -->
                         <td><?php echo $user['email']?></td>
+                        <td><?php echo $user['interest']?></td>
                         <td><?php echo $user['gender']?></td>
                       <td>
                   <?php

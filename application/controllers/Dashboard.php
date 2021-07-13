@@ -161,7 +161,7 @@ class Dashboard extends Admin_Controller
 
 	//This function is used to review the application and generate application number
 
-	public function rejectReviewResponse($userID){ 
+	public function deleteReviewResponse($userID){
 		$this->AdminData->deleteReviewList($userID);
 		redirect(base_url('Dashboard/showReview'));
 	}

@@ -6,7 +6,7 @@
 	<title>NSS Registration 2020-21_<?php echo $this->session->loginUser->name;?>_<?php echo $this->session->loginUser->timestamp;?></title>
 	<link rel="icon" type="image/jpg" href="<?= base_url('assets/img/images/nsslogo.png'); ?>">
 	<!-- <meta name="google" content="notranslate"> -->
-	<meta charset="utf-8">
+	
 
 	<link rel="icon" type="image/jpg" href="<?= base_url('assets/img/images/nsslogo.png'); ?>">
 	<meta charset="utf-8">
@@ -25,7 +25,7 @@
 		<div class="container" style="border: 2px solid black; margin-top:20px; margin-bottom: 10px;" >
 			<div class="alert alert-success alert-dismissible fade show" id="alert">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<strong>Congratulations</strong> Your Registration form was successfully submitted. <b>Your Registration number is <?php echo $this->session->loginUser->reg_no ?>.</b><br>Save this form in PDF format. 
+                <strong>Congratulations</strong> Your NSS Registration 2020-21 was successful. <b>Your Registration number is <?php echo $this->session->loginUser->reg_no ?>.</b><br>Save this form in PDF format and remember your registration number. 
 			</div>
 			<p align="center">
 				<img style="height:85px;"src="<?= base_url('assets/img/images/nsslogo.png'); ?>"/><br>
@@ -132,7 +132,10 @@
 							</div>
 							<div class="col-md-2 data">
 								<?php 	
-								echo date("Y")-date_format($dob,"Y"); ?>
+								$today = date("Y-m-d");
+								$diff = date_diff(date_create($this->session->loginUser->dob), date_create($today));
+								echo $diff->format('%y');
+                                 ?>
 								वर्ष 
 							</div>
 							<div class="col-md-2">

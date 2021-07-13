@@ -15,9 +15,6 @@ class Users extends MY_controller
         $data['end_at']   = date("Y-m-d H:i:s", strtotime(trim($respo[1])));
         $currentDateTime = date('Y-m-d H:i:s');
         
-       
-
-
         $boys = $this->UsersData->getBoysReg();
         $girls = $this->UsersData->getGirlsReg();
         

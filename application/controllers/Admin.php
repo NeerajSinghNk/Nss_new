@@ -31,7 +31,7 @@ class Admin extends Admin_controller
 					);
 					
 					$this->session->set_userdata($logged_in_sess);
-           			redirect('Dashboard/index', 'refresh');
+           			redirect('/Dashboard/index', 'refresh');
            		}
            		else {
            			$this->data['errors'] = 'Incorrect email/password combination';

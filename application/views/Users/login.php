@@ -64,8 +64,7 @@
 					Swal.fire({
 					icon: 'info',
 					title: 'Application Status',
-					text: 'Your Application Is Not Approved Yet...',
-					footer: '<a href>Why do I have this issue?</a>'
+					text: 'Your Application under review you will be informed after the verfication process is completed',
 					})
 		<?php }?>
 

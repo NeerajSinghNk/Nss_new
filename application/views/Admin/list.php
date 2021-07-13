@@ -82,8 +82,8 @@ $(document).ready(function() {
                         <th>Category</th>
                         <th>Blood group</th>
                         <th>Whatsapp No.</th>
-                        <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
+                        <th>Activities</th>
                         <th>Session</th>
                         
                         
@@ -111,6 +111,7 @@ $(document).ready(function() {
                         <td><?php echo $user['whatsappno']?></td>
                         <!-- <td><?php echo $user['altno']?></td> -->
                         <td><?php echo $user['email']?></td>
+                        <td><?php echo $user['interest']?></td>
                         <td><?php echo $user['session']?></td>
                        
                     

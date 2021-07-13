@@ -72,11 +72,12 @@
 			<div class="content">
 				<ul>
 					<li class="highlight">Last Date to fill NSS Registration Form is <b><?php echo date('d/m/Y h:i:s A',$lastdate);?></b>
-					<li>ONLY the First <?php echo $BoysGirls?> entries will be considered for registration (<?php echo $TotalBoy?> Boys + <?php echo $TotalGirl?> Girls).
+					<li>ONLY the NSS VOLUNTEERS 2020-21 Selected Students will be considered for registration (<?php echo $TotalBoy?> Boys + <?php echo $TotalGirl?> Girls).
 					<li>Use your <b>Email Id</b> to fill NSS Registration Form and <b>Remember your Password</b> as it will be used to access your Final Filled Form.</li>
 					<li>After successful submission of your form, a FINAL FILLED FORM will be generated like one shown below.<b> Save the FINAL FILLED FORM</b> as PDF for future use or you can login <a href="<?= base_url('Users/login')?>" target="_blank">here</a> to view/download your FINAL FILLED FORM.</li>
-					<li>Remember your Registration Number given in Final Filled Form.</li>
-					<li>Registered students will be added to "NSS VOLUNTEER <?php echo idate('Y')?>-<?php echo idate('y')+1?>" Whatsapp group once all registrations are completed.</li>
+					<li>Remember your <b>NSS Registration Number</b> given in Final Filled Form.</li>
+					<!-- <li>Registered students will be added to "NSS VOLUNTEER <?php echo idate('Y')?>-<?php echo idate('y')+1?>" Whatsapp group once all registrations are completed.</li> -->
+                    <li> Check the detailed instructions <a href="https://drive.google.com/file/d/1NtiEMoHYEdLo_x_W-dlcIQBEIQiQbt6S/view?usp=sharing" target="_blank">here</a>.</li>
 					<img class="img-fluid" src="<?= base_url('assets/img/finalform.png');?>">
 					
 					</ul>
