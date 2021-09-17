@@ -206,7 +206,7 @@
 					</div>
 				</div>
 
-			
+				<?php $geCountries = $this->Site->getAllCountries(); ?>			
 
 				<div class="form-group row">
 

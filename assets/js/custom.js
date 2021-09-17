@@ -15,7 +15,7 @@ jQuery(document).on('change', 'select#state-name', function(e) {
 // function get All States
 function getStatesList(countryID) {
     $.ajax({
-        url: baseurl + "Users/getstates",
+        url: baseurl + "register/getstates",
         type: 'post',
         data: { countryID: countryID },
         dataType: 'json',
@@ -43,7 +43,7 @@ function getStatesList(countryID) {
 // function get All Cities
 function getCityList(stateID) {
     $.ajax({
-        url: baseurl + "Users/getcities",
+        url: baseurl + "register/getcities",
         type: 'post',
         data: { stateID: stateID },
         dataType: 'json',

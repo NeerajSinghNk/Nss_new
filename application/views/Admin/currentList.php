@@ -57,9 +57,9 @@ $(document).ready(function() {
                   <thead>
                   <!-- <th>Timestamp</th> -->
                         <!-- <th><input type = "checkbox" id="check" name="check"></th> -->
-                        <th>#</th>
                         
-                        <th>Reg. No.</th>
+                        
+                      <!--  <th>Reg. No.</th>
                         <th>Name</th>
                         <th>Father's Name</th>
                         <th>Year</th>
@@ -71,8 +71,17 @@ $(document).ready(function() {
                         <th>Email Id</th>
                         <th>Password</th>
                         <th>Gender</th>
-                       <!-- <th>Activities</th> -->
-                        
+                        <th>Activities</th> -->
+                        <th>#</th>
+                        <th>Reg. No.</th>
+                        <th>State</th>
+                        <th>District</th>
+                        <th>Name Of The Institution</th>
+                        <th>Name Of Volunteers</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>E-Mail</th>
+                        <th>Phone</th>
                        
                         
                   </thead>
@@ -88,17 +97,15 @@ $(document).ready(function() {
                         <td><?php echo htmlentities($cnt);?></td>
                         
                         <td><?php echo $user['reg_no']?></td>
+                        <td><?php echo $user['state']?></td>
+                        <td><?php echo $user['city']?></td>
+                        <td>Institute of Engineering & Technology, DAVV</td>
                         <td><?php echo $user['name']?></td>
-                        <td><?php echo $user['fathername']?></td>
-                        <td><?php echo $user['class']?></td>
-                        <td><?php echo $user['branch']?></td>
-                        <td><?php echo $user['category']?></td>
-                        <td><?php echo $user['dob']?></td>
-                        <td><?php echo $user['bloodgrp']?></td>
-                        <td><?php echo $user['whatsappno']?></td>
-                        <td><?php echo $user['email']?></td>
-                       <td><?php echo $user['pass']?></td>
                         <td><?php echo $user['gender']?></td>
+                        <td><?php echo $user['dob']?></td>
+                        <td><?php echo $user['email']?></td>
+                        <td><?php echo $user['whatsappno']?></td>
+                        
                         
                      
                   <?php

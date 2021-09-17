@@ -188,11 +188,11 @@ class Users extends MY_controller
     }
 
     // get state names
-    public function country() {
+    // public function country() {
         
-        $data['getCountries'] = $this->Site->getAllCountries();   
-        $this->load->view('/Users/register', $data);
-    }
+    //     $data['getCountries'] = $this->Site->getAllCountries();   
+    //     $this->load->view('/Users/register', $data);
+    // }
 
     // get state names
     public function getstates() {

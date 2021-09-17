@@ -97,8 +97,11 @@
 			If already Registered
 		</div>
 	</div>
+
+	<?php $sirName = $this->UsersData->head(); $name = " "; $phone = " "; foreach($sirName as $row){ $name = $row['FullName']; $phone = $row['Phone']; } ?> 
+
 	<div class="footer">
-		In case of any problem/query please contact<br> Prof. Shailendra Singh Khinchi (+91 9425956306)
+		In case of any problem/query please contact<br>Prof. <?php echo $name;?>  (<?php echo $phone;?>)
 	</div>
 </body>
 </html>
