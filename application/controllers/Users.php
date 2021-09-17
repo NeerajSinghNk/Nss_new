@@ -153,6 +153,9 @@ class Users extends MY_controller
 
             $formArray['interest'] = $interest;
             $formArray['session'] = $sessionNss[0]['sessionYear'];
+            $formArray['country'] = $this->input->post('regcountry');
+            $formArray['state'] = $this->input->post('state_name');
+            $formArray['city'] = $this->input->post('city_name');
             $this->UsersData->registerUser($formArray);
             $this->session->set_flashdata('success_msg','registered');
             return redirect('/Users/login');
@@ -183,6 +186,33 @@ class Users extends MY_controller
             return redirect('/Users/login');
         }
     }
+
+    // get state names
+    public function country() {
+        
+        $data['getCountries'] = $this->Site->getAllCountries();   
+        $this->load->view('/Users/register', $data);
+    }
+
+    // get state names
+    public function getstates() {
+        $json = array();
+        $this->Site->setCountryID($this->input->post('countryID'));
+        $json = $this->Site->getStates();
+        header('Content-Type: application/json');
+        echo json_encode($json);
+    }
+
+    // get city names
+    function getcities() {
+        $json = array();
+        $this->Site->setStateID($this->input->post('stateID'));
+        $json = $this->Site->getCities();
+        header('Content-Type: application/json');
+        echo json_encode($json);
+    }
+
+
 
 
     public function login()

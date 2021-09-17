@@ -15,26 +15,7 @@
     <link href="<?= base_url('assets/css/register.css');?>" rel="stylesheet">
 	<script src="<?= base_url('assets/js/register.js');?>" type="text/javascript"></script>
 
-	<!-- Signature links -->
-	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet"> 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="<?= base_url('assets/js/jquery.signature.min.js')?>"></script>
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/jquery.signature.css')?>">
-	<style>
-
-	.kbw-signature { width: 400px; height: 200px;}
-
-	#sig canvas{
-
-		width: 100% !important;
-
-		height: auto;
-
-	}
-
-</style> -->
+	
 
 </head>
 <body onload="load()">
@@ -224,6 +205,49 @@
 						</div>
 					</div>
 				</div>
+
+			
+
+				<div class="form-group row">
+
+					<label for="caddr" class="col-md-3 col-form-label required">Country</label>
+					<div class="col-md-9">
+						<select title="Select Country" name="regcountry" class="form-control" id="country-name">      
+							<option value="">Select Country</option>
+								<?php
+								foreach ($geCountries as $key => $element) {
+									echo '<option value="'.$element['country_id'].'">'.$element['country_name'].'</option>';
+								}
+							?>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+
+					<label for="caddr" class="col-md-3 col-form-label required">State</label>
+					<div class="col-md-9">
+						<select title="Select State" name="state_name" class="form-control" id="state-name">      
+							<option value="">Select State</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+
+					<label for="caddr" class="col-md-3 col-form-label required">City</label>
+					<div class="col-md-9">
+						<select title="Select City" name="city_name" class="form-control" id="city-name">      
+							<option value="">Select City</option>
+						</select>
+					</div>
+				</div>
+
+			
+							
+
+				
+
 
 				<div class="form-group row">
 
