@@ -1,13 +1,9 @@
 <!-- <link rel="stylesheet" href="<?php echo base_url('assets/css/nssUpdateRegis.css') ?>"> -->
     <!-- <link href="<?= base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet" media="screen"> -->
     
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css"> -->
-    
-    <!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"> -->
-<!-- <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> -->
 
     <!-- daterange picker -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/daterangepicker/daterangepicker.css">
    <!-- iCheck for checkboxes and radio inputs -->
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Content Wrapper. Contains page content -->
@@ -50,6 +46,8 @@
       $boys = $this->UsersData->getBoysReg();
       $girls = $this->UsersData->getGirlsReg();
       $sessionNss = $this->UsersData->getSessionYear();
+      $cordi = $this->UsersData->cordiName();
+      $pho = $this->UsersData->phone();
       // print_r();
       $resDate = $this->UsersData->fetchRegDate();
           $respo = '';
@@ -64,12 +62,25 @@
 
       $TotalBoy = implode("",$boys[0]);
       $TotalGirl = implode("",$girls[0]);
-  
+      $cordiName = implode("",$cordi[0]);
+      $cordiPhone = implode("",$pho[0]);
     ?>
     <?php echo form_open('Dashboard/nssRegisUpdate');?>   
         <fieldset>
             <legend>Please Update Registration Data...</legend>
             <div class="form-group">
+
+            <label for="dtp_input1" class="col-md-2 control-label">Co-ordinator</label>
+            <div class="input-group date form_data col-md-5">
+              <span class="input-group-addon"><span class="ion ion-person-add"></span></span>
+              <input class="form-control" size="16" type="text" name="coordinator" placeholder="Enter Co-ordinator Name" value="<?php echo $cordiName?>">
+            </div>
+          
+            <label for="dtp_input1" class="col-md-2 control-label">Phone No.</label>
+            <div class="input-group date form_data col-md-5">
+              <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+              <input class="form-control" size="16" type="number" name="phone" placeholder="Enter Phone No." value="<?php echo $cordiPhone?>">
+            </div>
 
             <label for="dtp_input1" class="col-md-2 control-label">Boy's</label>
             <div class="input-group date form_data col-md-5">
@@ -86,11 +97,17 @@
             <div class="form-group">
             <label for="dtp_input1" class="col-md-2 control-label">Date Time Picking</label>
 
-                  <div class="input-group  date form_data col-md-5">
+                  <!-- <div class="input-group  date form_data col-md-5">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-clock"></i></span>
                     </div>
                     
+                    <input type="text" class="form-control float-right" name="dateTime" id="reservationtime" value="">
+                  </div> -->
+                  <div class="input-group  date form_data col-md-5">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-clock"></i></span>
+                    </div>
                     <input type="text" class="form-control float-right" name="dateTime" id="reservationtime" value="<?php echo $respo?>">
                   </div>
                   <!-- /.input group -->
@@ -156,6 +173,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script src="https://adminlte.io/themes/dev/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -166,13 +184,14 @@
 
 
         //Date range picker with time picker
-        $('#reservationtime').daterangepicker({
-          // alert("not"),
-          timePicker: true,
-          timePickerIncrement: 30,
-          locale: {
-            format: 'MM/DD/YYYY hh:mm A'
-          }
+   
+
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
     })
 
 
@@ -208,5 +227,4 @@
 <script type="text/javascript" src="<?= base_url('assets/js/bootstrap.min.js')?>"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 
-<script src="https://adminlte.io/themes/dev/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
 

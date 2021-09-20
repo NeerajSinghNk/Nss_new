@@ -26,7 +26,7 @@
    <!-- Date Picker -->
    <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') ?>">
    <!-- Daterange picker -->  
-   <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') ?>">
+   <!-- <link rel="stylesheet" href="<?php //echo base_url('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') ?>"> -->
    <!-- bootstrap wysihtml5 - text editor -->
    <link rel="stylesheet" href="<?php echo base_url('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>">
    <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
@@ -66,7 +66,7 @@
 <script src="<?php echo base_url('assets/bower_components/jquery-knob/dist/jquery.knob.min.js') ?>"></script>
 <!-- daterangepicker -->
 <script src="<?php echo base_url('assets/bower_components/moment/min/moment.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
+<!-- <script src="<?//php echo base_url('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js') ?>"></script> -->
 <!-- datepicker -->
 <script src="<?php echo base_url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') ?>"></script>
 <!-- Bootstrap WYSIHTML5 -->

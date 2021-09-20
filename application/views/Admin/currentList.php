@@ -97,8 +97,8 @@ $(document).ready(function() {
                         <td><?php echo htmlentities($cnt);?></td>
                         
                         <td><?php echo $user['reg_no']?></td>
-                        <td><?php echo $user['state']?></td>
-                        <td><?php echo $user['city']?></td>
+                        <td><?php echo $user['state_name']?></td>
+                        <td><?php echo $user['city_name']?></td>
                         <td>Institute of Engineering & Technology, DAVV</td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['gender']?></td>

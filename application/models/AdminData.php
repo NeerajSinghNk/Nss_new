@@ -145,6 +145,8 @@ class AdminData extends CI_Model
 		date_default_timezone_set('Asia/Calcutta');
 		$this->db->where('reg_no IS NOT NULL');
 		$this->db->where('session', $sessionNss[0]['sessionYear'])->order_by('name', 'ASC');
+		$this->db->join('states','state_id=state');
+		$this->db->join('cities','city_id=city');
 		$currentRes = $this->db->get('volunteer')->result_array();
 		return $currentRes;
 	}
@@ -264,13 +266,15 @@ class AdminData extends CI_Model
 	}
 
 	//Insert a registration date in RegisterVar table
-	public function registerVar($dateTime,$boys,$girls,$status,$sessionYear)
+	public function registerVar($dateTime,$boys,$girls,$status,$sessionYear,$cordiName,$phone)
 	{
 		$this->db->set('regisDate', $dateTime);
 		$this->db->set('boys', $boys);
 		$this->db->set('girls', $girls);
 		$this->db->set('status', $status);
 		$this->db->set('sessionYear', $sessionYear);
+		$this->db->set('coordinator_name', $cordiName);
+		$this->db->set('phone',$phone);
 		$this->db->where('id', 1);
 		$this->db->update('registerVar'); // gives UPDATE `mytable` SET `registerDate` = 'dateTime' WHERE `id` = 1
 		

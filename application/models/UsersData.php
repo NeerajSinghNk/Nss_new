@@ -114,6 +114,14 @@ public function getRegDate(){
     return $this->db->select('regisDate')->where('id', 1)->get('registerVar')->result_array();
 }
 
+public function cordiName(){
+    return $this->db->select('coordinator_name')->where('id', 1)->get('registerVar')->result_array();
+}
+
+public function phone(){
+    return $this->db->select('phone')->where('id', 1)->get('registerVar')->result_array();
+}
+
 public function getStatus(){
     return $this->db->select('status')->where('id', 1)->get('registerVar')->result_array();
 }
@@ -147,9 +155,7 @@ public function approvedReviewForm($id, $regno){
         // $sql = "INSERT into volunteer('reg_no') values ($regno) where sno = $id";
 }
 
-public function head(){
-    return $this->db->get('coordinator')->result_array();
-}
+
 
 
 }

@@ -98,10 +98,14 @@
 		</div>
 	</div>
 
-	<?php $sirName = $this->UsersData->head(); $name = " "; $phone = " "; foreach($sirName as $row){ $name = $row['FullName']; $phone = $row['Phone']; } ?> 
-
+	<?php
+	$cordi = $this->UsersData->cordiName();
+	$pho = $this->UsersData->phone();
+	$cordiName = implode("",$cordi[0]);
+      $cordiPhone = implode("",$pho[0]);
+	?>
 	<div class="footer">
-		In case of any problem/query please contact<br>Prof. <?php echo $name;?>  (<?php echo $phone;?>)
+		In case of any problem/query please contact<br>Prof. <?php echo $cordiName;?>  +91-<?php echo $cordiPhone;?>
 	</div>
 </body>
 </html>

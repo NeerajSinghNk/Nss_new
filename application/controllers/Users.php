@@ -161,6 +161,7 @@ class Users extends MY_controller
             $formArray['country'] = $this->input->post('country');
             $formArray['state'] = $this->input->post('state_name');
             $formArray['city'] = $this->input->post('city_name');
+            // print_r($formArray);
             $this->UsersData->registerUser($formArray);
             $this->session->set_flashdata('success_msg','registered');
             return redirect('/Users/login');
