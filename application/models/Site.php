@@ -1,45 +1,39 @@
 <?php
+class Site extends CI_Model
+{
+    function fetch_country()
+    {
+        $this->db->order_by("country_name", "ASC");
+        $query = $this->db->get("countries");
+        
+        return $query->result();
+    }
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
- 
-class Site extends CI_Model {
-    private $_countryID;
-    private $_stateID;
- 
-    // set country id
-    public function setCountryID($countryID) {
-        return $this->_countryID = $countryID;
+    function fetch_state($country_id)
+    {
+        $this->db->where('country_id', $country_id);
+        $this->db->order_by('state_name', 'ASC');
+        $query = $this->db->get('states');
+        $output = '<option value="">Select State</option>';
+        foreach($query->result() as $row)
+        {
+            $output .= '<option value="'.$row->state_id.'">'.$row->state_name.'</option>';
+        }
+        return $output;
     }
-    // set state id
-    public function setStateID($stateID) {
-        return $this->_stateID = $stateID;
+
+    function fetch_city($state_id)
+    {
+        $this->db->where('state_id', $state_id);
+        $this->db->order_by('city_name', 'ASC');
+        $query = $this->db->get('cities');
+        $output = '<option value="">Select City</option>';
+        foreach($query->result() as $row)
+        {
+            $output .= '<option value="'.$row->city_id.'">'.$row->city_name.'</option>';
+        }
+        return $output;
     }
- 
-    public function getAllCountries() {
-        $this->db->select(array('c.id as country_id', 'c.slug', 'c.sortname', 'c.name as country_name'));
-        $this->db->from('countries as c');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
- 
-    // get state method
-    public function getStates() {
-        $this->db->select(array('s.id as state_id', 's.country_id', 's.name as state_name'));
-        $this->db->from('states as s');
-        $this->db->where('s.country_id', $this->_countryID);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
- 
-    // get city method
-    public function getCities() {
-        $this->db->select(array('i.id as city_id', 'i.name as city_name', 'i.state_id'));
-        $this->db->from('cities as i');
-        $this->db->where('i.state_id', $this->_stateID);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
- 
 }
+
 ?>

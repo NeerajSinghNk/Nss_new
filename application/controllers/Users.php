@@ -1,9 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends MY_controller
-{ 
+{
+    
+   
     public function index()
     {
+       
         date_default_timezone_set('Asia/Calcutta');
         $resDate = $this->UsersData->fetchRegDate();
         $respo = '';
@@ -37,7 +40,7 @@ class Users extends MY_controller
 
     public function check_terms()
     {
-
+        
         $data['MaleTotal'] = $this->UsersData->maleRecord();
         $data['FemaleTotal'] = $this->UsersData->femaleRecord();
 
@@ -73,7 +76,9 @@ class Users extends MY_controller
 
     public function register()
     {
-        $this->load->view('Users/register');
+        // $this->load->view('Users/register');
+        $data['getCountries'] = $this->Site->fetch_country();
+        $this->load->view('users/register', $data);
     }
 
 
@@ -153,7 +158,7 @@ class Users extends MY_controller
 
             $formArray['interest'] = $interest;
             $formArray['session'] = $sessionNss[0]['sessionYear'];
-            $formArray['country'] = $this->input->post('regcountry');
+            $formArray['country'] = $this->input->post('country');
             $formArray['state'] = $this->input->post('state_name');
             $formArray['city'] = $this->input->post('city_name');
             $this->UsersData->registerUser($formArray);
@@ -187,31 +192,7 @@ class Users extends MY_controller
         }
     }
 
-    // get state names
-    // public function country() {
-        
-    //     $data['getCountries'] = $this->Site->getAllCountries();   
-    //     $this->load->view('/Users/register', $data);
-    // }
-
-    // get state names
-    public function getstates() {
-        $json = array();
-        $this->Site->setCountryID($this->input->post('countryID'));
-        $json = $this->Site->getStates();
-        header('Content-Type: application/json');
-        echo json_encode($json);
-    }
-
-    // get city names
-    function getcities() {
-        $json = array();
-        $this->Site->setStateID($this->input->post('stateID'));
-        $json = $this->Site->getCities();
-        header('Content-Type: application/json');
-        echo json_encode($json);
-    }
-
+    
 
 
 
@@ -243,6 +224,31 @@ class Users extends MY_controller
             //$pd = $this->load->view("Users/genrate_pdf");   
         }
     }
+
+    // get state names
+    // public function fetch_country() {
+        
+    //    $data['geCountries'] = $this->Site->fetch_country();
+    //     $this->load->view('users/register', $data);
+    // }
+
+    // get state names
+    function fetch_state()
+    {
+        if($this->input->post('country_id'))
+        {
+            echo $this->Site->fetch_state($this->input->post('country_id'));
+        }
+    }
+
+    function fetch_city()
+    {
+        if($this->input->post('state_id'))
+        {
+            echo $this->Site->fetch_city($this->input->post('state_id'));
+        }
+    }
+
 }
 
     

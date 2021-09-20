@@ -28,6 +28,7 @@
 		<h3>Volunteer Registration Form</h3>
 		<div class="text-uppercase btn-danger" style="padding-left: 10px;"><?php echo $this->session->userdata('disabledMsg');?>
 </div>
+		
 		<!-- <form class="card" method="post" action="submitform.php"> -->
         <?php echo form_open('Users/getDataForm',['class' => 'card']);?>    
 			<div id="data">
@@ -206,20 +207,20 @@
 					</div>
 				</div>
 
-				<?php $geCountries = $this->Site->getAllCountries(); ?>			
-
+							
 				<div class="form-group row">
 
 					<label for="caddr" class="col-md-3 col-form-label required">Country</label>
 					<div class="col-md-9">
-						<select title="Select Country" name="regcountry" class="form-control" id="country-name">      
-							<option value="">Select Country</option>
-								<?php
-								foreach ($geCountries as $key => $element) {
-									echo '<option value="'.$element['country_id'].'">'.$element['country_name'].'</option>';
-								}
-							?>
-						</select>
+					<select name="country" id="country" class="form-control">
+						<option value="">Select Country</option>
+						<?php
+						foreach($getCountries as $row)
+						{
+							echo '<option value="'.$row->country_id.'">'.$row->country_name.'</option>';
+						}
+						?>
+					</select>
 					</div>
 				</div>
 
@@ -227,7 +228,7 @@
 
 					<label for="caddr" class="col-md-3 col-form-label required">State</label>
 					<div class="col-md-9">
-						<select title="Select State" name="state_name" class="form-control" id="state-name">      
+						<select title="Select State" name="state_name" class="form-control" id="state">      
 							<option value="">Select State</option>
 						</select>
 					</div>
@@ -237,7 +238,7 @@
 
 					<label for="caddr" class="col-md-3 col-form-label required">City</label>
 					<div class="col-md-9">
-						<select title="Select City" name="city_name" class="form-control" id="city-name">      
+						<select title="Select City" name="city_name" class="form-control" id="city">      
 							<option value="">Select City</option>
 						</select>
 					</div>
@@ -526,6 +527,53 @@
 
     });
 
+</script>
+<script>
+$(document).ready(function(){
+ $('#country').change(function(){
+  var country_id = $('#country').val();
+  
+  if(country_id != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>Users/fetch_state",
+    method:"POST",
+    data:{country_id:country_id},
+    success:function(data)
+    {
+     $('#state').html(data);
+     $('#city').html('<option value="">Select City</option>');
+    }
+   });
+  }
+  else
+  {
+   $('#state').html('<option value="">Select State</option>');
+   $('#city').html('<option value="">Select City</option>');
+  }
+ });
+
+ $('#state').change(function(){
+  var state_id = $('#state').val();
+  if(state_id != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>Users/fetch_city",
+    method:"POST",
+    data:{state_id:state_id},
+    success:function(data)
+    {
+     $('#city').html(data);
+    }
+   });
+  }
+  else
+  {
+   $('#city').html('<option value="">Select City</option>');
+  }
+ });
+ 
+});
 </script>
 </body>
 </html>
