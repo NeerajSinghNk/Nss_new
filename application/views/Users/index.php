@@ -3,14 +3,15 @@
 	//$dataStatus = $this->session->userdata('dataStatus');
 	//$last_date = $dataStatus['last_date'];
 	$lastdate = strtotime($end_at);
-	//print_r($dataStatus);
+	//print_r($dataStatus);		<
+	$sessionNss = $this->UsersData->getSessionYear();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSS Registration 2020-21</title>
+    <title>NSS Registration <?php echo  $sessionNss[0]['sessionYear']?></title>
 	<link rel="icon" type="image/jpg" href="<?= base_url('assets/img/images/nsslogo.png'); ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -71,13 +72,20 @@
 			<div class="h3 text-uppercase" align="center" style="font-family: sans-serif;">Instructions for NSS Registration</div>
 			<div class="content">
 				<ul>
+			
 					<li class="highlight">Last Date to fill NSS Registration Form is <b><?php echo date('d/m/Y h:i:s A',$lastdate);?></b>
-					<li>ONLY the NSS VOLUNTEERS 2020-21 Selected Students will be considered for registration (<?php echo $TotalBoy?> Boys + <?php echo $TotalGirl?> Girls).
+					<!-- <li>ONLY the NSS VOLUNTEERS 2020-21 Selected Students will be considered for registration (<?php //echo $TotalBoy?> Boys + <?php //echo $TotalGirl?> Girls). -->
+					
 					<li>Use your <b>Email Id</b> to fill NSS Registration Form and <b>Remember your Password</b> as it will be used to access your Final Filled Form.</li>
-					<li>After successful submission of your form, a FINAL FILLED FORM will be generated like one shown below.<b> Save the FINAL FILLED FORM</b> as PDF for future use or you can login <a href="<?= base_url('Users/login')?>" target="_blank">here</a> to view/download your FINAL FILLED FORM.</li>
+					<li>After successfull submission, you will see a pop-up that shows your application was received successfully..</li>
+					<li>NSS IET-DAVV team will verify all your details provided <i>(It may take 3-5 days).</i></li>
+					<li>Once the verification process is over, a final list of selected students having new registration numbers will be sent on the NSS group. </li>
+					<li>After that you will be able to login and check your filled form.</li>
+
+					<li><b> Save the FINAL FILLED FORM</b> as PDF for future use or you can login <a href="<?= base_url('Users/login')?>" target="_blank">here</a> to view/download your FINAL FILLED FORM.</li>
 					<li>Remember your <b>NSS Registration Number</b> given in Final Filled Form.</li>
 					<!-- <li>Registered students will be added to "NSS VOLUNTEER <?php echo idate('Y')?>-<?php echo idate('y')+1?>" Whatsapp group once all registrations are completed.</li> -->
-                    <li> Check the detailed instructions <a href="https://drive.google.com/file/d/1NtiEMoHYEdLo_x_W-dlcIQBEIQiQbt6S/view?usp=sharing" target="_blank">here</a>.</li>
+                    <li> Check the detailed instructions <a href="https://drive.google.com/file/d/1INTJwhNBVEUvhdTb_GOHocwtJEXZwCkZ/view?usp=sharing" target="_blank">here</a>.</li>
 					<img class="img-fluid" src="<?= base_url('assets/img/finalform.png');?>">
 					
 					</ul>

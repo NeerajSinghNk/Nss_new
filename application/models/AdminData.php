@@ -28,9 +28,11 @@ class AdminData extends CI_Model
 
 	public function login($email, $password) {
 		if($email && $password) {
-			$sql = "SELECT * FROM users WHERE email = ?";
-			$query = $this->db->query($sql, array($email));
-
+			$sql = "SELECT * FROM users WHERE email = ? and pass= ?";
+           
+			$query = $this->db->query($sql, array($email,$password));
+            // print_r($query->row());
+            // exit;
 			if($query->num_rows() == 1) {
 				$result = $query->row_array();
 				return $result;
@@ -276,7 +278,7 @@ class AdminData extends CI_Model
 		$this->db->set('coordinator_name', $cordiName);
 		$this->db->set('phone',$phone);
 		$this->db->where('id', 1);
-		$this->db->update('registerVar'); // gives UPDATE `mytable` SET `registerDate` = 'dateTime' WHERE `id` = 1
+		$this->db->update('registervar'); // gives UPDATE `mytable` SET `registerDate` = 'dateTime' WHERE `id` = 1
 		
 		// if($sql_query){
 		// 	$this->session->set_flashdata('success', 'Date & Time Updated Successfully');

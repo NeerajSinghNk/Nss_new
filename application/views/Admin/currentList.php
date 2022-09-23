@@ -1,6 +1,7 @@
+<?php $sessionNss = $this->UsersData->getSessionYear();?>
 <script>
 $(document).ready(function() {
-    $("title").html('NSS 2020-2021 Volunteers List');
+    $("title").html('NSS 2021-2022 Volunteers List');
     $('#mytable').DataTable( {
         dom: 'Bfrtip',
         buttons: [
@@ -79,10 +80,12 @@ $(document).ready(function() {
                         <th>Name Of The Institution</th>
                         <th>Name Of Volunteers</th>
                         <th>Gender</th>
+                        <th>Category</th>
                         <th>DOB</th>
                         <th>E-Mail</th>
+                        <!--<th>Password</th>-->
                         <th>Phone</th>
-                       
+                      
                         
                   </thead>
                   <tbody id="myTable">
@@ -102,11 +105,12 @@ $(document).ready(function() {
                         <td>Institute of Engineering & Technology, DAVV</td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['gender']?></td>
+                        <td><?php echo $user['category']?></td>
                         <td><?php echo $user['dob']?></td>
                         <td><?php echo $user['email']?></td>
+                        <!--<td><?php //echo $user['pass']?></td>-->
                         <td><?php echo $user['whatsappno']?></td>
-                        
-                        
+                       
                      
                   <?php
                   

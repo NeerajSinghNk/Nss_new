@@ -60,23 +60,24 @@
 
 		<?php 
 			if ($this->session->flashdata('not_approve') == 'notApproved') 
-				{ ?>
-					Swal.fire({
-					icon: 'info',
-					title: 'Application Status',
-					text: 'Your Application under review you will be informed after the verfication process is completed',
-					})
+				{ ?>	
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email Id or Password is invalid',
+                        footer: '<a href>Why do I have this issue?</a>'
+				})		
+
 		<?php }?>
 
 		<?php
 			if($this->session->flashdata('error_msg') == 'error_msg'){
 			?>
 				Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Email Id or Password is invalid',
-				footer: '<a href>Why do I have this issue?</a>'
-				})		
+					icon: 'info',
+					title: 'Application Status',
+					text: 'Your Application under review you will be informed after the verfication process is completed',
+					})	
 
 		<?php } ?>
 

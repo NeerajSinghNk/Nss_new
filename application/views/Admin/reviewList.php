@@ -79,14 +79,14 @@ $(document).ready(function() {
                         <th>Father's Name</th>
                         <th>Year</th>
                         <th>Branch</th>
-                        <th>Category</th>
-                        <th>Blood group</th>
+                        <th>NSS</th>
+                        <!--<th>Blood group</th> -->
                         <th>Whatsapp No.</th>
                         <!-- <th>Alt Contact No.</th> -->
                         <th>Email Id</th>
                         <th>Activities</th>
                         <th>Gender</th>
-                        <th width="60">Session</th>
+                       <!-- <th width="60">Session</th>-->
                         
                   </thead>
                   <tbody id="myTable">
@@ -105,32 +105,32 @@ $(document).ready(function() {
                           echo anchor("Dashboard/approvedReview/{$user['sno']}",'Accept','class="glyphicon glyphicon-check btn-success btn-xs"','id="approve"');
                           ?>
                         </button><br>
-                        <button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
+                        <!--<button type="submit" class="btn btn-danger pull-center" style="padding:1px 1px; margin:1px 1px">
                           <?php 
-                          echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
+                        //   echo anchor("Dashboard/deleteReviewResponse/{$user['sno']}",'Reject','class="glyphicon glyphicon-trash btn-danger btn-xs"');
                           
                           ?>
-                          </button>
+                          </button> -->
                         </td>
                         <td><?php echo $user['name']?></td>
                         <td><?php echo $user['fathername']?></td>
                         <td><?php echo $user['class']?></td>
                         <td><?php echo $user['branch']?></td>
-                        <td><?php echo $user['category']?></td>
-                        <td><?php echo $user['bloodgrp']?></td>
+                        <td><?php echo $user['is_nssV']?></td>
+                       <!-- <td><?php echo $user['bloodgrp']?></td> -->
                         <td><?php echo $user['whatsappno']?></td>
                         <!-- <td><?php echo $user['altno']?></td> -->
                         <td><?php echo $user['email']?></td>
                         <td><?php echo $user['interest']?></td>
                         <td><?php echo $user['gender']?></td>
-                      <td>
+                      <!-- <td>
                   <?php
                   //for passing row id to controller
                   // echo  anchor("Dashboard/updateCurrentResponse/{$user['sno']}",' ','class="btn btn-primary btn-xs glyphicon glyphicon-pencil"')
                   echo $user['session']
                   ?>
                   
-                 </td>
+                 </td>-->
                  
                   </tr>
                   <?php

@@ -3,7 +3,7 @@
     
 
     <!-- daterange picker -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/daterangepicker/daterangepicker.css">
    <!-- iCheck for checkboxes and radio inputs -->
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Content Wrapper. Contains page content -->

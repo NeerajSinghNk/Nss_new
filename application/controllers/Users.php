@@ -78,7 +78,7 @@ class Users extends MY_controller
     {
         // $this->load->view('Users/register');
         $data['getCountries'] = $this->Site->fetch_country();
-        $this->load->view('users/register', $data);
+        $this->load->view('Users/register', $data);
     }
 
 

@@ -94,7 +94,7 @@ public function isvalidate($username, $password)
 
 public function fetchRegDate()
 {
-    $users = $this->db->get('registerVar')->result_array();
+    $users = $this->db->get('registervar')->result_array();
     return $users;
 }
 
@@ -103,31 +103,31 @@ public function fetchRegDate()
 
 
 public function getBoysReg(){
-    return $this->db->select('boys')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('boys')->where('id', 1)->get('registervar')->result_array();
 }
 
 public function getGirlsReg(){
-    return $this->db->select('girls')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('girls')->where('id', 1)->get('registervar')->result_array();
 }
 
 public function getRegDate(){
-    return $this->db->select('regisDate')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('regisDate')->where('id', 1)->get('registervar')->result_array();
 }
 
 public function cordiName(){
-    return $this->db->select('coordinator_name')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('coordinator_name')->where('id', 1)->get('registervar')->result_array();
 }
 
 public function phone(){
-    return $this->db->select('phone')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('phone')->where('id', 1)->get('registervar')->result_array();
 }
 
 public function getStatus(){
-    return $this->db->select('status')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('status')->where('id', 1)->get('registervar')->result_array();
 }
 
 public function getSumBoysGirls(){
-    $this->db->select('SUM(boys) + SUM(girls) as total', FALSE)->get('registerVar')->result_array();
+    $this->db->select('SUM(boys) + SUM(girls) as total', FALSE)->get('registervar')->result_array();
 }
 
 public function getGender($id){
@@ -139,7 +139,7 @@ public function getGender($id){
 // THis function is used to get the session of NSS registration
 public function getSessionYear()
 {
-    return $this->db->select('sessionYear')->where('id', 1)->get('registerVar')->result_array();
+    return $this->db->select('sessionYear')->where('id', 1)->get('registervar')->result_array();
 }
 
     //Approved review application
@@ -155,7 +155,16 @@ public function approvedReviewForm($id, $regno){
         // $sql = "INSERT into volunteer('reg_no') values ($regno) where sno = $id";
 }
 
-
-
+public function checkRegistrationNumber($regno){
+    print_r($regno);
+    $sessionNss = $this->UsersData->getSessionYear();
+    $result = $this->db->select('reg_no')
+                     ->where('session', $sessionNss[0]['sessionYear'])
+                    ->where('reg_no', $regno)
+                    ->get('volunteer')
+                    ->result_array();
+    return $result[0]['reg_no'];
+    
+}
 
 }

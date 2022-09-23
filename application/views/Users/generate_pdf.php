@@ -2,8 +2,8 @@
 <html>
 <head>
 	
-	
-	<title>NSS Registration 2020-21_<?php echo $this->session->loginUser->name;?>_<?php echo $this->session->loginUser->timestamp;?></title>
+	<?php $sessionNss = $this->UsersData->getSessionYear();?>
+	<title>NSS Registration <?php echo  $sessionNss[0]['sessionYear'];?><?php echo $this->session->loginUser->name;?>_<?php echo $this->session->loginUser->timestamp;?></title>
 	<link rel="icon" type="image/jpg" href="<?= base_url('assets/img/images/nsslogo.png'); ?>">
 	<!-- <meta name="google" content="notranslate"> -->
 	

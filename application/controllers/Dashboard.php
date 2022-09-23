@@ -156,9 +156,18 @@ class Dashboard extends Admin_Controller
                }                                        //VALUE IN 
 			   $regno +=$add_it;      
 			                  //REGNO.
-           
-		$this->UsersData->approvedReviewForm($id, $regno);
-		redirect(base_url('Dashboard/showReview'));
+        // if($this->UsersData->checkRegistrationNumber($regno) != $regno){
+        //     print_r($this->UsersData->checkRegistrationNumber($regno) != $regno);
+        //     print_r("Successful");
+        //     exit;
+            $this->UsersData->approvedReviewForm($id, $regno);
+		    redirect(base_url('Dashboard/showReview'));
+        // }
+		// else{
+        //     print_r("Error occure");
+        //     exit;
+        //     $this->session->set_flashdata('errorInReg','Opps!!! Registration number is not generated yet. Please try again after reloading...');
+        // }
        
         
     }

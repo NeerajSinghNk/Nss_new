@@ -2,11 +2,12 @@
 // print_r($this->session->flashdata('disabledMsg'));
 // print_r($this->session->flashdata('boys_disabled'));
 // print_r($this->session->flashdata('girls_disabled'));
+$sessionNss = $this->UsersData->getSessionYear();
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>NSS Volunteer Registration 2020-21</title>
+	<title>NSS Volunteer Registration <?php echo  $sessionNss[0]['sessionYear']?></title>
 	<link rel="icon" type="image/jpg" href="<?= base_url('assets/img/images/nsslogo.png'); ?>">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -207,7 +208,13 @@
 					</div>
 				</div>
 
-							
+							<div class="form-group row">
+
+					<label for="paddr" class="col-md-3 col-form-label required">Permanent Address</label>
+					<div class="col-md-9">
+						<textarea class="form-control" type="text" name="paddr"value="" id="padrr" required></textarea>
+					</div>
+				</div>
 				<div class="form-group row">
 
 					<label for="caddr" class="col-md-3 col-form-label required">Country</label>
@@ -257,13 +264,7 @@
 						<textarea class="form-control" type="text" name="caddr"value="" id="caddr" required></textarea>
 					</div>
 				</div>
-				<div class="form-group row">
-
-					<label for="paddr" class="col-md-3 col-form-label required">Permanent Address</label>
-					<div class="col-md-9">
-						<textarea class="form-control" type="text" name="paddr"value="" id="padrr" required></textarea>
-					</div>
-				</div>
+				
 				<div class="form-group row">
 
 					<label for="is_nssV" class="col-md-3 col-form-label required">Are you NSS / NCC Volunteer?</label>
@@ -277,7 +278,8 @@
 					<div class="col-md-3 col-form-label required" id="joining">NSS Joining Year</div>
 					<div class="col-md-3">
 						<select class="form-control" id="mySelect1" name="nssYear" required>
-                            <option id="2020" value="2020" selected>2020</option>
+                            <option id="2021" value="2021" selected>2021</option>
+                            <option id="2020" value="2020" >2020</option>
                             <option id="2019" value="2019" >2019</option>
 							<option id="2018" value="2018">2018</option>
 							<option id="2017" value="2017">2017</option>
